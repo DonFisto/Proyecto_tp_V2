@@ -25,4 +25,6 @@ double get_bullet_x(Bala b);
 
 double get_bullet_y(Bala b);
 
+double get_bullet_rad(Bala b);
+
 #endif

@@ -15,7 +15,7 @@ struct JugadorRep
     double w;
     double h;
     double vx;
-    double vy
+    double vy;
     double aimx;
     double aimy;
     double ang;
@@ -24,6 +24,9 @@ struct JugadorRep
     int pts;
     int invincibility;
     int cdown;
+    int r;
+    int g;
+    int b;
     Imagen img;
 };
 double get_player_pos_x(Jugador j)
@@ -50,23 +53,23 @@ double get_player_aimy(Jugador j)
 {
     return j->aimy;
 }
-double get_energy(Jugador j)
+int get_player_energy(Jugador j)
 {
     return j->energy;
 }
-int get_lives(Jugador j)
+int get_player_lives(Jugador j)
 {
     return j->vidas;
 }
-int get_pts(Jugador j)
+int get_player_pts(Jugador j)
 {
     return j->pts;
 }
-double get_player_inv(Jugador j)
+int get_player_inv(Jugador j)
 {
     return j->invincibility;
 }
-double get_cooldown(Jugador j)
+int get_player_cooldown(Jugador j)
 {
     return j->cdown;
 }
@@ -95,11 +98,27 @@ void set_pts(Jugador j, int p)
 {
     j->pts = p;
 }
-
+void color_change(Jugador j)
+{
+    if (j->r>0 && j->b==0)
+    {
+        j->r = j->r - 1;
+        j->g = j->g + 1;
+    }
+    else if (j->g>0 && j->r==0)
+    {
+        j->g = j->g - 1;
+        j->b = j->b + 1;
+    }
+    else if (j->b>0 && j->g==0)
+    {
+        j->b = j->b - 1;
+        j->r = j->r + 1;
+    }
+}
 
 Jugador crea_jugador()
 {
-    struct JugadorRep j = {.r = {.p = {.x = 0, .y = 0}, .w = 40, .h = 80}, .v = {.x = 0, .y = 0}, .aim = {.x = 0, .y = 1}, .energy = 100, .invincibility = 100, .jumpt = 0, .dash = 0, .vidas = 5, .pts = 0, .cdown = 10, .img = lee_imagen("turret.bmp", 55)};
     Jugador j = malloc(sizeof (struct JugadorRep));
     j->x = 0;
     j->y = 0;
@@ -114,18 +133,21 @@ Jugador crea_jugador()
     j->pts = 0;
     j->invincibility = 100;
     j->cdown = 10;
+    j->r = 255;
+    j->g = 0;
+    j->b = 0;
     j->img = lee_imagen("turret.bmp", 55);
     return j;
 }
-void dibujar_jugador(Jugador j, int * r1, int * g1, int  * b1, int opp)
+void dibujar_jugador(Jugador j)
 {
-    int opacidad = opp;
+    int opacidad = 255;
     if (j->invincibility)
     {
         opacidad = opacidad/4;
     }
-    cambia_color(r1, g1, b1);
-    color_relleno( *r1, *g1, *b1, opacidad );
+    color_change(j);
+    color_relleno( j->r, j->g, j->b, opacidad );
     dibuja_rectangulo( j->x,j->y, j->w,j->h );
     color_relleno(6, 150, 150, 255);
     dibuja_rectangulo(j->x, j->y-10, j->energy/120.0 * j->w, 5);
@@ -157,8 +179,8 @@ void apuntar2(Jugador j)
 void apuntar3(Jugador j)
 {
     double dp = distancia_punto_punto(x_raton(), y_raton(), j->x, j->y);
-    j->aim.x = (j->x-x_raton())/dp*-1;
-    j->aim.y = (j->y-y_raton())/dp*-1;
+    j->aimx = (j->x-x_raton())/dp*-1;
+    j->aimy = (j->y-y_raton())/dp*-1;
 
 }
 void check_bounds (Jugador j)
@@ -180,7 +202,7 @@ void check_bounds (Jugador j)
         j->y = -j->h + 1;
     }
 }
-void mover_jugador_2(Jugador j, NodoBalaPtr header)
+void mover_jugador_2(Jugador j, Rafaga r)
 {
 
     j->x = j->x + j->vx*2/5;
@@ -231,9 +253,8 @@ void mover_jugador_2(Jugador j, NodoBalaPtr header)
     }
     if (tecla_pulsada(SDL_SCANCODE_SPACE) && j->cdown==0 && j->energy>0)
     {
-        //Cambiar
-        crea_bala(j, header);
-        //inserta_rafaga
+        Bala b = create_bullet(j->x+j->w/2,j->y + j->h/2, j->aimx, j->aimy, 45);
+        insert_burst(r, b);
         j->energy = j->energy - 5;
 
         j->cdown = 10;

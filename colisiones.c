@@ -76,7 +76,6 @@ int solape_circ_rect(double cx, double cy, double r, double x, double y, double 
         return 0;
     }
 }
-
 Bala create_bullet(double x, double y, double dx, double dy, double v)
 {
     Bala bullet = malloc(sizeof(struct BalaRep));
@@ -119,6 +118,10 @@ double get_bullet_x(Bala b)
 double get_bullet_y(Bala b)
 {
     return b->cy;
+}
+double get_bullet_rad(Bala b)
+{
+    return b->rad;
 }
 int bullet_collision(Bala b, double x, double y, double w, double h)
 {
