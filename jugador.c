@@ -6,6 +6,7 @@
 #include "constantes.h"
 #include "colisiones.h"
 #include "rafaga.h"
+#include "enemigos.h"
 
 
 struct JugadorRep

@@ -6,6 +6,7 @@
 #include "constantes.h"
 #include "colisiones.h"
 #include "rafaga.h"
+#include "enemigos.h"
 struct BalaRep
 {
     double cx;
@@ -85,6 +86,7 @@ Bala create_bullet(double x, double y, double dx, double dy, double v)
     bullet->dy = dy;
     bullet->v = v;
     bullet->rad = 10;
+    return bullet;
 }
 void free_bullet(Bala b)
 {
