@@ -6,5 +6,6 @@
 #define LB_SIZE 10
 #define PI 3.14159265358979323846
 #define T_MAX_EJERCITO 15
+#define TROUND 500
 
 #endif

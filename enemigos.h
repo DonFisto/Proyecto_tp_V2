@@ -3,11 +3,15 @@
 
 typedef struct EjercitoRep * Ejercito;
 
+int get_army_ealive(Ejercito e);
+
+void set_ealive(Ejercito e, int n);
+
 Ejercito create_army();
 
 void free_army(Ejercito e);
 
-void insert_enemy(Ejercito e, double x, double y, int type);
+void insert_enemy(Ejercito e, double x, double y, int type, double jx, double jy, double jw, double jh);
 
 void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r);
 

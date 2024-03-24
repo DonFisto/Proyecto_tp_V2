@@ -7,6 +7,10 @@
 #include "colisiones.h"
 #include "rafaga.h"
 #include "enemigos.h"
+#include "consumibles.h"
+#include "partida.h"
+
+
 struct BalaRep
 {
     double cx;
@@ -16,16 +20,13 @@ struct BalaRep
     double v;
     double rad;
 };
-int dentro_rectangulo( double x, double y, double w, double h, double px, double py )
+int dentro_rectangulo(double x, double y, double w, double h, double px, double py)
 {
     if (px >= x && px < x + w && py >= y && py < y + h)
     {
         return 1;
     }
-    else
-    {
-        return 0;
-    }
+    return 0;
 
 }
 double distancia_punto_punto( double x1, double y1, double x2, double y2 )

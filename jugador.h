@@ -39,10 +39,10 @@ void set_pts(Jugador j, int p);
 
 void color_change(Jugador j);
 
-Jugador crea_jugador();
+Jugador create_player();
 
-void dibujar_jugador(Jugador j);
+void draw_player(Jugador j);
 
-void mover_jugador_2(Jugador j, Rafaga r);
+void move_player(Jugador j, Rafaga r);
 
 #endif

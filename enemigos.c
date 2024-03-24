@@ -7,6 +7,9 @@
 #include "colisiones.h"
 #include "rafaga.h"
 #include "enemigos.h"
+#include "consumibles.h"
+#include "partida.h"
+
 
 struct EnemigoRep
 {
@@ -27,28 +30,39 @@ struct EjercitoRep
 {
     struct EnemigoRep * ej;
     int ealive;
-    int n;
 };
 
+int get_army_ealive(Ejercito e)
+{
+    return e->ealive;
+}
+void set_ealive(Ejercito e, int n)
+{
+    e->ealive = n;
+}
 Ejercito create_army()
 {
     Ejercito e = malloc(sizeof(struct EjercitoRep));
     e->ej = malloc(T_MAX_EJERCITO * sizeof(struct EnemigoRep));
     e->ealive = 0;
-    e->n = T_MAX_EJERCITO;
     return e;
 }
 void free_army(Ejercito e)
 {
     free(e->ej);
 }
-void insert_enemy(Ejercito e, double x, double y, int type)
+void insert_enemy(Ejercito e, double x, double y, int type, double jx, double jy, double jw, double jh)
 {
     if(e->ealive<T_MAX_EJERCITO)
     {
         struct EnemigoRep enemigo;
         enemigo.x = x;
         enemigo.y = y;
+        while(distancia_punto_punto((jx + jh/2),(jy + jh/2),(enemigo.x + enemigo.w/2),(enemigo.y + enemigo.h/2)) < enemigo.alert_dist)
+        {
+            enemigo.x = rand()%(W-40);
+            enemigo.y = rand()%(H-40);
+        }
         if (type == 0)
         {
             enemigo.w = 40;

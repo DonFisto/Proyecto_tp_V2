@@ -7,6 +7,8 @@
 #include "colisiones.h"
 #include "rafaga.h"
 #include "enemigos.h"
+#include "consumibles.h"
+#include "partida.h"
 
 
 struct JugadorRep
@@ -82,6 +84,7 @@ void incr_pts(Jugador j, int p)
 void dmg(Jugador j)
 {
     j->vidas = j->vidas - 1;
+    j->invincibility = 100;
 }
 void set_inv(Jugador j, int t)
 {
@@ -118,7 +121,7 @@ void color_change(Jugador j)
     }
 }
 
-Jugador crea_jugador()
+Jugador create_player()
 {
     Jugador j = malloc(sizeof (struct JugadorRep));
     j->x = 0;
@@ -140,7 +143,7 @@ Jugador crea_jugador()
     j->img = lee_imagen("turret.bmp", 55);
     return j;
 }
-void dibujar_jugador(Jugador j)
+void draw_player(Jugador j)
 {
     int opacidad = 255;
     if (j->invincibility)
@@ -203,7 +206,7 @@ void check_bounds (Jugador j)
         j->y = -j->h + 1;
     }
 }
-void mover_jugador_2(Jugador j, Rafaga r)
+void move_player(Jugador j, Rafaga r)
 {
 
     j->x = j->x + j->vx*2/5;

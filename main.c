@@ -7,17 +7,23 @@
 #include "colisiones.h"
 #include "rafaga.h"
 #include "enemigos.h"
+#include "consumibles.h"
+#include "partida.h"
 
 int main( int argc, char *argv[] )
 {
 
     crea_pantalla( "Ejemplo 2", W,H );
-    int jugando = 1;
-
+    Partida p = start_game();
+    Jugador j = create_player();
+    Ejercito e = create_army();
+    Rafaga rj = create_burst_shot();
+    Rafaga re = create_burst_shot();
+    Caja c = create_box();
 
     while ( pantalla_activa())
     {
-        if(jugando)
+        if(get_game_active(p))
         {
             rellena_fondo( 255,255,255, 255 );
             actualiza_pantalla();

@@ -7,6 +7,9 @@
 #include "colisiones.h"
 #include "rafaga.h"
 #include "enemigos.h"
+#include "consumibles.h"
+#include "partida.h"
+
 
 struct NodoBala
 {
