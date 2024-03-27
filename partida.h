@@ -23,6 +23,8 @@ void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re);
 
 void box_behavior(Caja c, Jugador j);
 
+void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c);
+
 void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c);
 
 #endif

@@ -13,4 +13,6 @@ int box_collision(Caja c, double x, double y, double w, double h);
 
 void move_box(Caja c);
 
+void draw_box(Caja c);
+
 #endif

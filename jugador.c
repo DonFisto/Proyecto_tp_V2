@@ -134,6 +134,7 @@ Jugador create_player()
     j->aimy = 1;
     j->ang = 0;
     j->energy = 120;
+    j->vidas = 5;
     j->pts = 0;
     j->invincibility = 100;
     j->cdown = 10;
@@ -149,6 +150,8 @@ void draw_player(Jugador j)
     if (j->invincibility)
     {
         opacidad = opacidad/4;
+        color_relleno(100, 100, 100, 100);
+        dibuja_circulo(j->x + j->w/2, j->y + j->h/2, j->h/2);
     }
     color_change(j);
     color_relleno( j->r, j->g, j->b, opacidad );

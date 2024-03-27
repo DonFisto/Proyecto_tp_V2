@@ -58,11 +58,6 @@ void insert_enemy(Ejercito e, double x, double y, int type, double jx, double jy
         struct EnemigoRep enemigo;
         enemigo.x = x;
         enemigo.y = y;
-        while(distancia_punto_punto((jx + jh/2),(jy + jh/2),(enemigo.x + enemigo.w/2),(enemigo.y + enemigo.h/2)) < enemigo.alert_dist)
-        {
-            enemigo.x = rand()%(W-40);
-            enemigo.y = rand()%(H-40);
-        }
         if (type == 0)
         {
             enemigo.w = 40;
@@ -78,6 +73,7 @@ void insert_enemy(Ejercito e, double x, double y, int type, double jx, double jy
             enemigo.v = 3.5;
             enemigo.alert_dist = 800;
             enemigo.type = 1;
+            enemigo.cdown = 20;
         }
         else if(type == 2)
         {
@@ -86,6 +82,11 @@ void insert_enemy(Ejercito e, double x, double y, int type, double jx, double jy
             enemigo.v = 2;
             enemigo.alert_dist = 300;
             enemigo.type = 2;
+        }
+        while(distancia_punto_punto((jx + jh/2),(jy + jh/2),(enemigo.x + enemigo.w/2),(enemigo.y + enemigo.h/2)) < enemigo.alert_dist)
+        {
+            enemigo.x = rand()%(W-40);
+            enemigo.y = rand()%(H-40);
         }
         e->ej[e->ealive] = enemigo;
         e->ealive = e->ealive + 1;
@@ -198,8 +199,8 @@ void draw_army(Ejercito e)
         {
             color_relleno(255, 255, 0, 230);
         }
-        dibuja_rectangulo(e->ej[i].x, e->ej[i].y, e->ej[i].w, e->ej[i].w);
-        dibuja_linea((e->ej[i].x + e->ej[i].w/2),(e->ej[i].y + e->ej[i].h/2),(e->ej[i].x + e->ej[i].w/2 + 100*e->ej[i].dx),(e->ej[i].y + e->ej[i].h/2 + 100*e->ej[i].y));
+        dibuja_rectangulo(e->ej[i].x, e->ej[i].y, e->ej[i].w, e->ej[i].h);
+        dibuja_linea((e->ej[i].x + e->ej[i].w/2),(e->ej[i].y + e->ej[i].h/2),(e->ej[i].x + e->ej[i].w/2 + 100*e->ej[i].dx),(e->ej[i].y + e->ej[i].h/2 + 100*e->ej[i].dy));
 
     }
 }
@@ -219,7 +220,7 @@ int army_burst_shot_collision(Ejercito e, Rafaga r)
         if (burst_shot_collision(r, e->ej[i].x, e->ej[i].y, e->ej[i].w, e->ej[i].h))
         {
             e->ealive = e->ealive - 1;
-            e->ej[i] = e->ej[e->ealive - 1];
+            e->ej[i] = e->ej[e->ealive];
             cont = cont + 1;
         }
     }

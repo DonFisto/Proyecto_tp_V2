@@ -24,6 +24,7 @@ struct PartidaRep
     int troundleft;
     int pts;
     struct Leaderboard lb;
+    Imagen backg;
 };
 int get_game_active(Partida p)
 {
@@ -72,6 +73,7 @@ Partida start_game()
     p->troundleft = 500;
     p->pts = 0;
     p->lb = read_records();
+    p->backg = lee_imagen("map4.bmp", 0);
     return p;
 }
 int check_end_game(Jugador j)
@@ -84,7 +86,7 @@ void army_generation(Partida p, Ejercito e, Jugador j)
     int e1;
     int e2;
     int hoard_size = p->round/2 + 1;
-    if (hoard_size < T_MAX_EJERCITO)
+    if (hoard_size > T_MAX_EJERCITO)
     {
         hoard_size = T_MAX_EJERCITO;
     }
@@ -200,15 +202,15 @@ void army_generation(Partida p, Ejercito e, Jugador j)
 void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re)
 {
     move_army(e, get_player_pos_x(j), get_player_pos_y(j), get_player_inv(j), re);
-    if ((object_army_collision(e, get_player_pos_x(j), get_player_pos_y(j), get_player_width(j), get_player_height(j)))||(burst_shot_collision(re, get_player_pos_x(j), get_player_pos_y(j), get_player_width(j), get_player_height(j))))
+    if ((object_army_collision(e, get_player_pos_x(j), get_player_pos_y(j), get_player_width(j), get_player_height(j))||(burst_shot_collision(re, get_player_pos_x(j), get_player_pos_y(j), get_player_width(j), get_player_height(j))))&&(!get_player_inv(j)))
     {
         dmg(j);
     }
     army_burst_shot_collision(e, rj);
     if(p->troundleft == 0)
     {
-        army_generation(p, e, j);
         p->round = p->round + 1;
+        army_generation(p, e, j);
         printf("-----ROUND %d-----\n",p->round);
         p->troundleft = TROUND;
     }
@@ -228,7 +230,6 @@ void box_behavior(Caja c, Jugador j)
 {
     if(box_collision(c, get_player_pos_x(j), get_player_pos_y(j), get_player_width(j), get_player_height(j)))
     {
-        move_box(c);
         switch(get_box_type(c))
         {
         case 0:
@@ -243,7 +244,24 @@ void box_behavior(Caja c, Jugador j)
         case 3:
             break;
         }
+        move_box(c);
     }
+}
+void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c)
+{
+    dibuja_imagen(p->backg, -50.0, -75, 1600, 900);
+    char msg[15];
+    dibuja_rectangulo(5, 5, 200, 20);
+    sprintf(msg, "vidas: %d\n", get_player_lives(j));
+    dibuja_texto(msg, 10, 10);
+    sprintf(msg,"pts: %d\n", get_player_pts(j) );
+    dibuja_texto(msg, 100, 10);
+    draw_player(j);
+    draw_army(e);
+    draw_burst_shot(rj);
+    draw_burst_shot(re);
+    draw_box(c);
+
 }
 void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c)
 {
@@ -252,6 +270,9 @@ void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c)
     move_burst_shot(rj);
     move_burst_shot(re);
     box_behavior(c, j);
-
+    if(check_end_game(j))
+    {
+        p->active = 0;
+    }
 
 }

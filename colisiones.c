@@ -99,10 +99,6 @@ void move_bullet(Bala b)
     {
         b->cx = b->cx + b->dx * b->v;
         b->cy = b->cy + b->dy * b->v;
-        if(b->cx >= W+b->rad || b->cx <= -b->rad || b->cy >= H + b->rad || b->cy <= -b->rad)
-        {
-            free_bullet(b);
-        }
 
     }
 }

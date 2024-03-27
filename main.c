@@ -26,6 +26,8 @@ int main( int argc, char *argv[] )
         if(get_game_active(p))
         {
             rellena_fondo( 255,255,255, 255 );
+            game(p, j, e, rj, re, c);
+            draw_game(p, j, e, rj, re, c);
             actualiza_pantalla();
             espera( 15 );
 
@@ -33,7 +35,7 @@ int main( int argc, char *argv[] )
         }
         else
         {
-
+            rellena_fondo( 255,255,255, 255 );
             espera(10);
         }
     }
