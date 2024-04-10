@@ -36,6 +36,7 @@ int main( int argc, char *argv[] )
         else
         {
             rellena_fondo( 255,255,255, 255 );
+            actualiza_pantalla();
             espera(10);
         }
     }

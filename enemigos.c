@@ -51,13 +51,17 @@ void free_army(Ejercito e)
 {
     free(e->ej);
 }
-void insert_enemy(Ejercito e, double x, double y, int type, double jx, double jy, double jw, double jh)
+void insert_enemy(Ejercito e, double x, double y, int type)
 {
-    if(e->ealive<T_MAX_EJERCITO)
+    if(e->ealive<T_MAX_EJERCITO-1)
     {
         struct EnemigoRep enemigo;
         enemigo.x = x;
         enemigo.y = y;
+        enemigo.reroute = 0;
+        enemigo.dx = 1;
+        enemigo.dy = 0;
+        enemigo.cdown = 0;
         if (type == 0)
         {
             enemigo.w = 40;
@@ -82,11 +86,6 @@ void insert_enemy(Ejercito e, double x, double y, int type, double jx, double jy
             enemigo.v = 2;
             enemigo.alert_dist = 300;
             enemigo.type = 2;
-        }
-        while(distancia_punto_punto((jx + jh/2),(jy + jh/2),(enemigo.x + enemigo.w/2),(enemigo.y + enemigo.h/2)) < enemigo.alert_dist)
-        {
-            enemigo.x = rand()%(W-40);
-            enemigo.y = rand()%(H-40);
         }
         e->ej[e->ealive] = enemigo;
         e->ealive = e->ealive + 1;
@@ -136,7 +135,7 @@ void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r)
                 e->ej[i].reroute = 0;
                 if(e->ej[i].cdown == 0)
                 {
-                    Bala b = create_bullet(e->ej[i].x+e->ej[i].w/2,e->ej[i].y + e->ej[i].h/2, e->ej[i].dx, e->ej[i].dy, 45);
+                    Bala b = create_bullet(e->ej[i].x+e->ej[i].w/2,e->ej[i].y + e->ej[i].h/2, e->ej[i].dx, e->ej[i].dy, 15);
                     insert_burst(r, b);
                     e->ej[i].cdown = 100;
                 }
@@ -163,7 +162,7 @@ void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r)
 
         if(e->ej[i].x >= W )
         {
-            e->ej[i].x = -e->ej[i].w+1;
+            e->ej[i].x = -e->ej[i].w;
             e->ej[i].reroute = 0;
         }
         if(e->ej[i].x <= -e->ej[i].w )
