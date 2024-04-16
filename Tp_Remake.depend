@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1711548703 source:c:\users\dmcvg\onedrive\documentos\tp_remake\colisiones.c
+1711552303 source:c:\users\dmcvg\onedrive\documentos\tp_remake\colisiones.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -12,10 +12,10 @@
 	"consumibles.h"
 	"partida.h"
 
-1710768330 c:\users\dmcvg\onedrive\documentos\tp_remake\pantalla.h
+1710771930 c:\users\dmcvg\onedrive\documentos\tp_remake\pantalla.h
 	"SDL2/SDL.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_assert.h"
@@ -53,12 +53,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_main.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_main.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_stdinc.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_stdinc.h
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -90,29 +90,29 @@
 	<stdio.h>
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_config.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_config.h
 	"SDL_platform.h"
 	<winsdkver.h>
 	<sdkddkver.h>
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_platform.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_platform.h
 	<AvailabilityMacros.h>
 	<TargetConditionals.h>
 	<winapifamily.h>
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\begin_code.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\begin_code.h
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\close_code.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\close_code.h
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_assert.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_assert.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	<signal.h>
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_atomic.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_atomic.h
 	"SDL_stdinc.h"
 	"SDL_platform.h"
 	"begin_code.h"
@@ -120,7 +120,7 @@
 	<mbarrier.h>
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_audio.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_audio.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_endian.h"
@@ -130,12 +130,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_error.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_error.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_endian.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_endian.h
 	"SDL_stdinc.h"
 	<intrin.h>
 	<endian.h>
@@ -144,13 +144,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_mutex.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_mutex.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_thread.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_thread.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_atomic.h"
@@ -161,18 +161,18 @@
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_rwops.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_rwops.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_clipboard.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_clipboard.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_cpuinfo.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_cpuinfo.h
 	"SDL_stdinc.h"
 	<intrin.h>
 	<intrin.h>
@@ -194,7 +194,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_events.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_events.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -208,7 +208,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_video.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_video.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -216,13 +216,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_pixels.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_pixels.h
 	"SDL_stdinc.h"
 	"SDL_endian.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_rect.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_rect.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_pixels.h"
@@ -230,7 +230,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_surface.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_surface.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -239,11 +239,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_blendmode.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_blendmode.h
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_keyboard.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_keyboard.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_keycode.h"
@@ -251,21 +251,21 @@
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_keycode.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_keycode.h
 	"SDL_stdinc.h"
 	"SDL_scancode.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_scancode.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_scancode.h
 	"SDL_stdinc.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_mouse.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_mouse.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_joystick.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_joystick.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_guid.h"
@@ -273,13 +273,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_guid.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_guid.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_gamecontroller.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_gamecontroller.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
@@ -288,17 +288,17 @@
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_sensor.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_sensor.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_quit.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_gesture.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_gesture.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -306,70 +306,70 @@
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_touch.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_touch.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_filesystem.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_filesystem.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_haptic.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_haptic.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_hidapi.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_hidapi.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_hints.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_hints.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_loadso.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_log.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_log.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_messagebox.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_messagebox.h
 	"SDL_stdinc.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_metal.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_metal.h
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_power.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_power.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_render.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_render.h
 	"SDL_stdinc.h"
 	"SDL_rect.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_shape.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_shape.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -378,7 +378,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_system.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_system.h
 	"SDL_stdinc.h"
 	"SDL_keyboard.h"
 	"SDL_render.h"
@@ -386,39 +386,39 @@
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_timer.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_timer.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_version.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_version.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_locale.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_locale.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1698915950 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_misc.h
+1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl_misc.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1711314020 c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.h
+1711317620 c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.h
 	"rafaga.h"
 
-1710768330 c:\users\dmcvg\onedrive\documentos\tp_remake\rafaga.h
+1710771930 c:\users\dmcvg\onedrive\documentos\tp_remake\rafaga.h
 	"colisiones.h"
 
-1710768330 c:\users\dmcvg\onedrive\documentos\tp_remake\colisiones.h
+1710771930 c:\users\dmcvg\onedrive\documentos\tp_remake\colisiones.h
 
-1711553450 c:\users\dmcvg\onedrive\documentos\tp_remake\constantes.h
+1711557050 c:\users\dmcvg\onedrive\documentos\tp_remake\constantes.h
 
-1711551788 source:c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.c
+1711555388 source:c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -431,14 +431,14 @@
 	"consumibles.h"
 	"partida.h"
 
-1710768330 source:c:\users\dmcvg\onedrive\documentos\tp_remake\pantalla.c
+1710771930 source:c:\users\dmcvg\onedrive\documentos\tp_remake\pantalla.c
 	"Pantalla.h"
 	<stdlib.h>
 	<signal.h>
 	<stdio.h>
 	<math.h>
 
-1711301153 source:c:\users\dmcvg\onedrive\documentos\tp_remake\rafaga.c
+1711304753 source:c:\users\dmcvg\onedrive\documentos\tp_remake\rafaga.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -451,7 +451,7 @@
 	"consumibles.h"
 	"partida.h"
 
-1711552762 source:c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.c
+1712677939 source:c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -464,9 +464,9 @@
 	"consumibles.h"
 	"partida.h"
 
-1711313203 c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.h
+1712677939 c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.h
 
-1711553666 source:c:\users\dmcvg\onedrive\documentos\tp_remake\main.c
+1713257474 source:c:\users\dmcvg\onedrive\documentos\tp_remake\main.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -479,7 +479,7 @@
 	"consumibles.h"
 	"partida.h"
 
-1711552058 source:c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.c
+1711555658 source:c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -492,11 +492,11 @@
 	"consumibles.h"
 	"partida.h"
 
-1711549624 c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.h
+1711553224 c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.h
 
-1711553658 c:\users\dmcvg\onedrive\documentos\tp_remake\partida.h
+1713256431 c:\users\dmcvg\onedrive\documentos\tp_remake\partida.h
 
-1711553658 source:c:\users\dmcvg\onedrive\documentos\tp_remake\partida.c
+1713257115 source:c:\users\dmcvg\onedrive\documentos\tp_remake\partida.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>

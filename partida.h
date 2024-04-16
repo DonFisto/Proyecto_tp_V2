@@ -29,4 +29,9 @@ void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c);
 
 void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c);
 
+int button_click(double x, double y, double w, double h);
+
+int menu(Partida p);
+
+
 #endif

@@ -20,6 +20,7 @@ struct Leaderboard
 struct PartidaRep
 {
     int active;
+    int menu;
     int round;
     int troundleft;
     int pts;
@@ -106,6 +107,7 @@ Partida start_game()
 {
     Partida p = malloc(sizeof(struct PartidaRep));
     p->active = 1;
+    p->menu = 0;
     p->round = 0;
     p->troundleft = 500;
     p->pts = 0;
@@ -119,6 +121,7 @@ int check_end_game(Partida p, Jugador j)
     {
      p->lb = read_records();
      update_records(p);
+     p->menu = 0;
 
      return 1;
     }
@@ -325,5 +328,32 @@ void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c)
     {
         p->active = 0;
     }
+
+}
+
+
+
+
+int button_click(double x, double y, double w, double h)
+{
+    if(dentro_rectangulo(x, y, w, h, x_raton(), y_raton()) && boton_raton_pulsado(SDL_BUTTON_LEFT))
+    {
+        printf("CLICK");
+    }
+    return (dentro_rectangulo(x, y, w, h, x_raton(), y_raton()) && boton_raton_pulsado(SDL_BUTTON_LEFT));
+}
+int menu(Partida p)
+{
+    //botón de partida
+    color_relleno(100, 100, 100, 255);
+    dibuja_rectangulo(500, 100, 500, 150);
+    if(button_click(500, 100, 500, 150))return 1;
+    //botón salir
+    color_relleno(255, 0, 0, 255);
+    dibuja_rectangulo(500, 500, 500, 150);
+    if(button_click(500, 100, 500, 150))return 3;
+
+
+    return 0;
 
 }

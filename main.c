@@ -36,6 +36,16 @@ int main( int argc, char *argv[] )
         else
         {
             rellena_fondo( 255,255,255, 255 );
+            int result = menu(p);
+            if(result == 1)
+            {
+                p = start_game();
+                j = create_player();
+                e = create_army();
+                rj = create_burst_shot();
+                re = create_burst_shot();
+                c = create_box();
+            }
             actualiza_pantalla();
             espera(10);
         }
