@@ -46,6 +46,16 @@ int main( int argc, char *argv[] )
                 re = create_burst_shot();
                 c = create_box();
             }
+            else if(result == 3)
+            {
+
+                free_player(j);
+                free_army(e);
+                free_burst_shot(rj);
+                free_burst_shot(re);
+                free_box(c);
+                libera_pantalla();
+            }
             actualiza_pantalla();
             espera(10);
         }

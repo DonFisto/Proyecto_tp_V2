@@ -144,6 +144,10 @@ Jugador create_player()
     j->img = lee_imagen("turret.bmp", 55);
     return j;
 }
+void free_player(Jugador j)
+{
+    free(j);
+}
 void draw_player(Jugador j)
 {
     int opacidad = 255;

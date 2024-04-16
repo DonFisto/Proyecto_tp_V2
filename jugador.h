@@ -41,6 +41,8 @@ void color_change(Jugador j);
 
 Jugador create_player();
 
+void free_player(Jugador j);
+
 void draw_player(Jugador j);
 
 void move_player(Jugador j, Rafaga r);

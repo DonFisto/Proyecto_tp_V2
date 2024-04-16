@@ -351,7 +351,7 @@ int menu(Partida p)
     //botón salir
     color_relleno(255, 0, 0, 255);
     dibuja_rectangulo(500, 500, 500, 150);
-    if(button_click(500, 100, 500, 150))return 3;
+    if(button_click(500, 500, 500, 150))return 3;
 
 
     return 0;
