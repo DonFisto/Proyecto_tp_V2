@@ -12,7 +12,7 @@
 	"consumibles.h"
 	"partida.h"
 
-1710771930 c:\users\dmcvg\onedrive\documentos\tp_remake\pantalla.h
+1713281822 c:\users\dmcvg\onedrive\documentos\tp_remake\pantalla.h
 	"SDL2/SDL.h"
 
 1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl.h
@@ -408,7 +408,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1711317620 c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.h
+1713258895 c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.h
 	"rafaga.h"
 
 1710771930 c:\users\dmcvg\onedrive\documentos\tp_remake\rafaga.h
@@ -416,9 +416,9 @@
 
 1710771930 c:\users\dmcvg\onedrive\documentos\tp_remake\colisiones.h
 
-1711557050 c:\users\dmcvg\onedrive\documentos\tp_remake\constantes.h
+1713281821 c:\users\dmcvg\onedrive\documentos\tp_remake\constantes.h
 
-1711555388 source:c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.c
+1713258895 source:c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -466,7 +466,7 @@
 
 1712677939 c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.h
 
-1713257474 source:c:\users\dmcvg\onedrive\documentos\tp_remake\main.c
+1713301038 source:c:\users\dmcvg\onedrive\documentos\tp_remake\main.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -494,9 +494,9 @@
 
 1711553224 c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.h
 
-1713256431 c:\users\dmcvg\onedrive\documentos\tp_remake\partida.h
+1713298971 c:\users\dmcvg\onedrive\documentos\tp_remake\partida.h
 
-1713257115 source:c:\users\dmcvg\onedrive\documentos\tp_remake\partida.c
+1713301031 source:c:\users\dmcvg\onedrive\documentos\tp_remake\partida.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>

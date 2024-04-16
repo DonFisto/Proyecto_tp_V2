@@ -21,6 +21,7 @@ struct PartidaRep
 {
     int active;
     int menu;
+    int pause;
     int round;
     int troundleft;
     int pts;
@@ -30,6 +31,10 @@ struct PartidaRep
 int get_game_active(Partida p)
 {
     return p->active;
+}
+int get_game_pause(Partida p)
+{
+    return p->pause;
 }
 int get_game_round(Partida p)
 {
@@ -47,7 +52,14 @@ void add_game_pts(Partida p, int n)
 {
     p->pts = p->pts + n;
 }
-
+void unpause(Partida p)
+{
+    p->pause = 0;
+}
+void end_game(Partida p)
+{
+    p->active = 0;
+}
 struct Leaderboard read_records()
 {
     struct Leaderboard lb;
@@ -108,6 +120,7 @@ Partida start_game()
     Partida p = malloc(sizeof(struct PartidaRep));
     p->active = 1;
     p->menu = 0;
+    p->pause = 0;
     p->round = 0;
     p->troundleft = 500;
     p->pts = 0;
@@ -324,9 +337,13 @@ void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c)
     move_burst_shot(rj);
     move_burst_shot(re);
     box_behavior(p, c, j);
+    if(tecla_pulsada(SDL_SCANCODE_ESCAPE))
+    {
+        p->pause = 1;
+    }
     if(check_end_game(p, j))
     {
-        p->active = 0;
+        end_game(p);
     }
 
 }
@@ -336,10 +353,6 @@ void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c)
 
 int button_click(double x, double y, double w, double h)
 {
-    if(dentro_rectangulo(x, y, w, h, x_raton(), y_raton()) && boton_raton_pulsado(SDL_BUTTON_LEFT))
-    {
-        printf("CLICK");
-    }
     return (dentro_rectangulo(x, y, w, h, x_raton(), y_raton()) && boton_raton_pulsado(SDL_BUTTON_LEFT));
 }
 int menu(Partida p)
@@ -357,3 +370,21 @@ int menu(Partida p)
     return 0;
 
 }
+int pause_menu(Partida p)
+{
+    color_relleno(255, 255, 255, 75);
+    dibuja_rectangulo(0, 0, 1500, 750);
+    //botón de partida
+    color_relleno(100, 100, 100, 255);
+    dibuja_rectangulo(500, 100, 500, 150);
+    if(button_click(500, 100, 500, 150)||tecla_pulsada(SDL_SCANCODE_BACKSPACE))return 1;
+    //botón salir
+    color_relleno(255, 0, 0, 255);
+    dibuja_rectangulo(500, 500, 500, 150);
+    if(button_click(500, 500, 500, 150))return 2;
+
+
+    return 0;
+
+}
+

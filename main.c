@@ -20,21 +20,52 @@ int main( int argc, char *argv[] )
     Rafaga rj = create_burst_shot();
     Rafaga re = create_burst_shot();
     Caja c = create_box();
-
+    int spam_check = 1;
     while ( pantalla_activa())
     {
         if(get_game_active(p))
         {
+            if(!get_game_pause(p))
+            {
             rellena_fondo( 255,255,255, 255 );
             game(p, j, e, rj, re, c);
             draw_game(p, j, e, rj, re, c);
+            }
+            else
+            {
+                if(get_game_pause(p))
+                {
+                draw_game(p, j, e, rj, re, c);
+                int outcome = pause_menu(p);
+                   if(outcome == 1)
+                   {
+                        unpause(p);
+                        spam_check = 1;
+                   }
+                   if(outcome == 2)
+                   {
+                       update_records(p);
+                       end_game(p);
+                       spam_check = 1;
+                   }
+                }
+            }
             actualiza_pantalla();
             espera( 15 );
 
 
         }
+        else if(spam_check)
+        {
+            if (!menu(p))
+            {
+                spam_check = 0;
+            }
+            espera(10);
+        }
         else
         {
+
             rellena_fondo( 255,255,255, 255 );
             int result = menu(p);
             if(result == 1)
@@ -48,7 +79,7 @@ int main( int argc, char *argv[] )
             }
             else if(result == 3)
             {
-
+                printf("CIAO");
                 free_player(j);
                 free_army(e);
                 free_burst_shot(rj);
