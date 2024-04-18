@@ -9,17 +9,22 @@
 #include "enemigos.h"
 #include "consumibles.h"
 #include "partida.h"
+#include "mapa.h"
 
 int main( int argc, char *argv[] )
 {
 
     crea_pantalla( "Ejemplo 2", W,H );
+    printf("* * * * * INICIO JUEGO * * * * *\n\n\n\n\n");
+    Mapa m = create_map();
+    generate_map(m, 200);
     Partida p = start_game();
     Jugador j = create_player();
     Ejercito e = create_army();
     Rafaga rj = create_burst_shot();
     Rafaga re = create_burst_shot();
     Caja c = create_box();
+    end_game(p);
     int spam_check = 1;
     while ( pantalla_activa())
     {
@@ -30,6 +35,7 @@ int main( int argc, char *argv[] )
             rellena_fondo( 255,255,255, 255 );
             game(p, j, e, rj, re, c);
             draw_game(p, j, e, rj, re, c);
+            draw_map(m);
             }
             else
             {
@@ -67,6 +73,7 @@ int main( int argc, char *argv[] )
         {
 
             rellena_fondo( 255,255,255, 255 );
+            draw_map_menu(m, 0, 250);
             int result = menu(p);
             if(result == 1)
             {
@@ -79,13 +86,18 @@ int main( int argc, char *argv[] )
             }
             else if(result == 3)
             {
-                printf("CIAO");
                 free_player(j);
                 free_army(e);
                 free_burst_shot(rj);
                 free_burst_shot(re);
                 free_box(c);
                 libera_pantalla();
+            }
+            else if(result == 4)
+            {
+                reset_map(m);
+                generate_map(m, 200);
+                spam_check = 1;
             }
             actualiza_pantalla();
             espera(10);

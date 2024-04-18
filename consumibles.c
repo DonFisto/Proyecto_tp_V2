@@ -52,8 +52,23 @@ void draw_box(Caja c)
 {
     color_relleno(0,255,0,255);
     dibuja_rectangulo(c->x, c->y, c->w, c->h);
-    if(c->type == 0)color_relleno(6, 150, 150, 255);
-    else if(c->type == 1) color_relleno(255, 255, 255, 255);
-    else if(c->type == 2) color_relleno(255, 0, 0, 255);
-    dibuja_rectangulo(c->x + c->w/3, c->y + c->h/3, c->w/3, c->h/3);
+    if(c->type == 0)
+    {
+        color_relleno(162, 103, 18, 255);
+        dibuja_circulo(c->x + c->w/3*2,c->y + c->h/2 - 0.0005, 6.1);
+        color_relleno(50, 50, 50, 255);
+        dibuja_rectangulo(c->x + c->w/4, c->y + c->h/3, c->w/3 + c->w/12, c->h/3);
+    }
+    else if(c->type == 1)
+    {
+        color_relleno(20, 209, 218, 255);
+        dibuja_circulo(c->x + c->w/2, c->y + c->h/2, c->w/4);
+    }
+    else if(c->type == 2)
+    {
+        color_relleno(255, 0, 0, 255);
+        dibuja_rectangulo(c->x + c->w/3, c->y + c->h/3, c->w/3, c->h/3);
+    }
+
+
 }

@@ -154,8 +154,8 @@ void draw_player(Jugador j)
     if (j->invincibility)
     {
         opacidad = opacidad/4;
-        color_relleno(100, 100, 100, 100);
-        dibuja_circulo(j->x + j->w/2, j->y + j->h/2, j->h/2);
+        color_relleno(20, 209, 218, 70);
+        dibuja_circulo(j->x + j->w/2, j->y + j->h/2, j->h/3*2);
     }
     color_change(j);
     color_relleno( j->r, j->g, j->b, opacidad );

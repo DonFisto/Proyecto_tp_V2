@@ -365,6 +365,10 @@ int menu(Partida p)
     color_relleno(255, 0, 0, 255);
     dibuja_rectangulo(500, 500, 500, 150);
     if(button_click(500, 500, 500, 150))return 3;
+    //botón mapa nuevo
+    color_relleno(0, 255, 0, 255);
+    dibuja_rectangulo(1300, 200, 50, 50);
+    if(button_click(1300, 200, 50, 50))return 4;
 
 
     return 0;

@@ -12,7 +12,7 @@
 	"consumibles.h"
 	"partida.h"
 
-1713281822 c:\users\dmcvg\onedrive\documentos\tp_remake\pantalla.h
+1713457784 c:\users\dmcvg\onedrive\documentos\tp_remake\pantalla.h
 	"SDL2/SDL.h"
 
 1698919550 c:\users\dmcvg\downloads\sdl2-devel-2.28.5-mingw\sdl2-2.28.5\x86_64-w64-mingw32\include\sdl2\sdl.h
@@ -416,9 +416,9 @@
 
 1710771930 c:\users\dmcvg\onedrive\documentos\tp_remake\colisiones.h
 
-1713281821 c:\users\dmcvg\onedrive\documentos\tp_remake\constantes.h
+1713475109 c:\users\dmcvg\onedrive\documentos\tp_remake\constantes.h
 
-1713258895 source:c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.c
+1713458717 source:c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -466,7 +466,7 @@
 
 1712677939 c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.h
 
-1713301038 source:c:\users\dmcvg\onedrive\documentos\tp_remake\main.c
+1713475020 source:c:\users\dmcvg\onedrive\documentos\tp_remake\main.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -478,8 +478,9 @@
 	"enemigos.h"
 	"consumibles.h"
 	"partida.h"
+	"mapa.h"
 
-1711555658 source:c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.c
+1713458601 source:c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -494,9 +495,9 @@
 
 1711553224 c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.h
 
-1713298971 c:\users\dmcvg\onedrive\documentos\tp_remake\partida.h
+1713457054 c:\users\dmcvg\onedrive\documentos\tp_remake\partida.h
 
-1713301031 source:c:\users\dmcvg\onedrive\documentos\tp_remake\partida.c
+1713474597 source:c:\users\dmcvg\onedrive\documentos\tp_remake\partida.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -508,4 +509,21 @@
 	"enemigos.h"
 	"consumibles.h"
 	"partida.h"
+
+1713474335 source:c:\users\dmcvg\onedrive\documentos\tp_remake\mapa.c
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+	"Pantalla.h"
+	"jugador.h"
+	"constantes.h"
+	"colisiones.h"
+	"rafaga.h"
+	"enemigos.h"
+	"consumibles.h"
+	"partida.h"
+	"mapa.h"
+	"string.h"
+
+1713470745 c:\users\dmcvg\onedrive\documentos\tp_remake\mapa.h
 

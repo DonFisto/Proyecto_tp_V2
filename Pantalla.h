@@ -4,30 +4,6 @@
 #include "SDL2/SDL.h"
 
 /**
-\mainpage Proyecto
-
-La biblioteca pantalla es un wrapper de la biblioteca SDL 2.0.
-Permite la escritura de programas gráficos interactivos sin necesidad de conocer muchos de los
-detalles de la visualización gráfica y de la programación dirigida por eventos típicos de SDL.
-Evidentemente, utilizando SDL directamente se pueden escribir programas más potentes y eficientes.
-
-   El esquema básico para hacer una animación interactiva con esta biblioteca es el siguiente:<br/>
- <br/>mientras ( pantalla_activa( ) ) {
- <br/> &nbsp;&nbsp;&nbsp; Detectar los eventos que se hayan producido usando las funciones tecla_pulsada() o boton_raton_pulsado().
- <br/> &nbsp;&nbsp;&nbsp; Modificar el estado de la animación en función de los evantos detectados.
- <br/> &nbsp;&nbsp;&nbsp; Componer el siguiente frame de la animación usando las funciones de dibujo: dibuja_rectangulo(), dibuja_circulo(), dibuja_imagen(), etc.
- <br/> &nbsp;&nbsp;&nbsp; Mostrar el frame que se acaba de componer usando la función actualiza_pantalla().
- <br/> &nbsp;&nbsp;&nbsp; Esperar unos milisegundos utilizando la función espera() (40 para conseguir unos 25fps) para que de tiempo al ojo a ver lo que ha pasado.
- <br/>}
-
-Copyright © 2022 by Juan A. Sánchez Laguna
-
-Permission to use, copy, modify, and distribute this software and its documentation under the terms of the GNU General Public License is hereby granted. No representations are made about
-the suitability of this software for any purpose. It is provided "as is" without express or implied warranty. See the <a href="https://www.gnu.org/licenses/gpl.txt">GNU General Public License</a> for more details.
-
-
-*/
-/**
    \file Pantalla.h
    \brief  Fichero de cabecera para poder usar las funciones del wrapper Pantalla
 */
@@ -81,7 +57,7 @@ int pantalla_activa();
 void espera(int ms);
 
 /**
- * \brief Actualiza la ventana mostrando el resultado de las funciones de dibujo que se hayan ejecutado hasta el momento.
+  \brief Actualiza la ventana mostrando el resultado de las funciones de dibujo que se hayan ejecutado hasta el momento.
 */
 void actualiza_pantalla();
 
