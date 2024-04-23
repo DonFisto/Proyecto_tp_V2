@@ -17,7 +17,8 @@ int main( int argc, char *argv[] )
     crea_pantalla( "Ejemplo 2", W,H );
     printf("* * * * * INICIO JUEGO * * * * *\n\n\n\n\n");
     Mapa m = create_map();
-    generate_map(m, 200);
+    reset_map(m);
+    generate_map(m, 100);
     Partida p = start_game();
     Jugador j = create_player();
     Ejercito e = create_army();
@@ -26,6 +27,7 @@ int main( int argc, char *argv[] )
     Caja c = create_box();
     end_game(p);
     int spam_check = 1;
+
     while ( pantalla_activa())
     {
         if(get_game_active(p))
@@ -33,15 +35,14 @@ int main( int argc, char *argv[] )
             if(!get_game_pause(p))
             {
             rellena_fondo( 255,255,255, 255 );
-            game(p, j, e, rj, re, c);
-            draw_game(p, j, e, rj, re, c);
-            draw_map(m);
+            game(p, j, e, rj, re, c, m);
+            draw_game(p, j, e, rj, re, c, m);
             }
             else
             {
                 if(get_game_pause(p))
                 {
-                draw_game(p, j, e, rj, re, c);
+                draw_game(p, j, e, rj, re, c, m);
                 int outcome = pause_menu(p);
                    if(outcome == 1)
                    {
@@ -96,7 +97,7 @@ int main( int argc, char *argv[] )
             else if(result == 4)
             {
                 reset_map(m);
-                generate_map(m, 200);
+                generate_map(m, 100);
                 spam_check = 1;
             }
             actualiza_pantalla();

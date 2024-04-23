@@ -9,7 +9,7 @@
 #include "enemigos.h"
 #include "consumibles.h"
 #include "partida.h"
-
+#include "mapa.h"
 
 struct NodoBala
 {
@@ -42,13 +42,19 @@ void insert_burst(Rafaga r, Bala b)
     nuevo->sig = r->sig;
     r->sig = nuevo;
 }
-void move_burst_shot(Rafaga r)
+void move_burst_shot(Rafaga r, Mapa m)
 {
     Rafaga aux = r;
+    double x;
+    double y;
+    double rad;
     while(aux->sig != NULL)
     {
         move_bullet(aux->sig->b);
-        if(get_bullet_x(aux->sig->b) >= W+get_bullet_rad(aux->sig->b) || get_bullet_x(aux->sig->b) <=-get_bullet_rad(aux->sig->b) || get_bullet_y(aux->sig->b) >= H + get_bullet_rad(aux->sig->b) || get_bullet_y(aux->sig->b) <= -get_bullet_rad(aux->sig->b))
+        x = get_bullet_x(aux->sig->b);
+        y = get_bullet_y(aux->sig->b);
+        rad = get_bullet_rad(aux->sig->b);
+        if(x >= W+rad || x <=-rad || y >= H + rad || y <= -rad || map_collision(m, x, y, rad*2, rad*2))
         {
             Rafaga borrar = aux->sig;
             aux->sig = borrar->sig;

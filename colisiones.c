@@ -9,6 +9,7 @@
 #include "enemigos.h"
 #include "consumibles.h"
 #include "partida.h"
+#include "mapa.h"
 
 
 struct BalaRep
@@ -29,6 +30,38 @@ int dentro_rectangulo(double x, double y, double w, double h, double px, double 
     return 0;
 
 }
+
+int solape_recta_rect(double rx, double ry, double rw, double rh, double x1, double y1, double x2, double y2)
+{
+    if(dentro_rectangulo (rx, ry, rw, rh, x1, y1) || dentro_rectangulo (rx, ry, rw, rh, x2, y2))return 1;
+    if(((x1 < rx) && (x2 > rx + rw)) || ((x2 < rx) && (x1 > rx + rw)))
+    {
+        if (y1 > ry && y1 < ry + rh && y2 > ry && y2 < ry + rh)return 1;
+        double x3 = rx;
+        double y3 = ry;
+        double x4 = rx + rw;
+        double y4 = ry + rh;
+        double x;
+        double y;
+        double denom = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+        x = ((x1 * y2 - y1 * x2) * (x3 - x4) - (x1 - x2) * (x3 * y4 - y3 * x4)) / denom;
+        y = ((x1 * y2 - y1 * x2) * (y3 - y4) - (y1 - y2) * (x3 * y4 - y3 * x4)) / denom;
+        if (dentro_rectangulo(rx, ry, rw, rh, x, y))return 1;
+        x3 = rx;
+        y3 = y3 + rh;
+        x4 = rx + rw;
+        y3 = ry;
+        denom = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+        x = ((x1 * y2 - y1 * x2) * (x3 - x4) - (x1 - x2) * (x3 * y4 - y3 * x4)) / denom;
+        y = ((x1 * y2 - y1 * x2) * (y3 - y4) - (y1 - y2) * (x3 * y4 - y3 * x4)) / denom;
+        if (dentro_rectangulo(rx, ry, rw, rh, x, y))return 1;
+    }
+
+
+
+    return 0;
+}
+
 double distancia_punto_punto( double x1, double y1, double x2, double y2 )
 {
     double d = 0;

@@ -265,9 +265,9 @@ void army_generation(Partida p, Ejercito e, Jugador j)
 
 
 }
-void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re)
+void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re, Mapa m)
 {
-    move_army(e, get_player_pos_x(j), get_player_pos_y(j), get_player_inv(j), re);
+    move_army(e, get_player_pos_x(j), get_player_pos_y(j), get_player_inv(j), re, m);
     if ((object_army_collision(e, get_player_pos_x(j), get_player_pos_y(j), get_player_width(j), get_player_height(j))||(burst_shot_collision(re, get_player_pos_x(j), get_player_pos_y(j), get_player_width(j), get_player_height(j))))&&(!get_player_inv(j)))
     {
         dmg(j);
@@ -314,9 +314,10 @@ void box_behavior(Partida p, Caja c, Jugador j)
         move_box(c);
     }
 }
-void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c)
+void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m)
 {
     dibuja_imagen(p->backg, -50.0, -75, 1600, 900);
+    draw_map(m);
     char msg[15];
     dibuja_rectangulo(5, 5, 200, 20);
     sprintf(msg, "vidas: %d\n", get_player_lives(j));
@@ -330,12 +331,12 @@ void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c)
     draw_box(c);
 
 }
-void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c)
+void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m)
 {
-    move_player(j, rj);
-    army_behavior(p, e, j, rj, re);
-    move_burst_shot(rj);
-    move_burst_shot(re);
+    move_player(j, rj, m);
+    army_behavior(p, e, j, rj, re, m);
+    move_burst_shot(rj, m);
+    move_burst_shot(re, m);
     box_behavior(p, c, j);
     if(tecla_pulsada(SDL_SCANCODE_ESCAPE))
     {

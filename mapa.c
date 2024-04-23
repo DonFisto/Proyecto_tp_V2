@@ -392,3 +392,143 @@ void draw_map_menu(Mapa m, int x, int y)
 
     }
 }
+
+int map_collision(Mapa m, double x, double y, double w, double h)
+{
+    int cord_x = x/BLOCK_SIZE;
+    int cord_y = y/BLOCK_SIZE;
+    if (cord_x <= 99 && cord_x > 0 && cord_y <= 49 && cord_y > 0)
+    {
+        if (solape_rectangulos(cord_x * BLOCK_SIZE, cord_y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, x, y, w, h)&& m->terreno[cord_y][cord_x] == 1)return 1;
+        for(int i = cord_y; i < y; i = i + 1)
+        {
+            for(int j = cord_x; j < x; j = j + 1)
+            {
+                if (solape_rectangulos(j * BLOCK_SIZE, i * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, x, y, w, h) && m->terreno[i][j] == 1)return 1;
+            }
+        }
+    }
+
+    return 0;
+}
+int line_map_collision(Mapa m, double x1, double y1, double x2, double y2)
+{
+    if(x1 < 0) x1 = 0;
+    if(y1 < 0) y1 = 0;
+    if(x2 < 0) x2 = 0;
+    if(y2 < 0) y2 = 0;
+
+    int x;
+    int y;
+    int a;
+    int b;
+    int z;
+    int t;
+    if(x1 < x2)
+    {
+        x = x1;
+        y = y1;
+        z = x1;
+        t = y1;
+        a = x2;
+        b = y2;
+    }
+    else
+    {
+        x = x2;
+        y = y2;
+        z = x2;
+        t = y2;
+        a = x1;
+        b = y1;
+    }
+    while (z < a)
+    {
+        //(a-x)/(b-y) = (z-x)/(t-y)
+        t = ((b-y) * (z-x) / (a-x) + y);
+        color_relleno(0, 0, 255, 255);
+        dibuja_rectangulo(z , t, BLOCK_SIZE, BLOCK_SIZE);
+        int coordx = z/BLOCK_SIZE;
+        int coordy = t/BLOCK_SIZE;
+        if(solape_rectangulos(z, t, BLOCK_SIZE, BLOCK_SIZE, coordx * BLOCK_SIZE, coordy * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE) && m->terreno[coordy][coordx] == 1)
+        {
+            dibuja_rectangulo(coordx * BLOCK_SIZE , coordy * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+            return 1;
+        }
+
+        z = z + BLOCK_SIZE;
+
+    }
+    return 0;
+}
+
+int line_map_collision2(Mapa m, double x1, double y1, double x2, double y2)
+{
+    if(x1 < 0) x1 = 0;
+    if(y1 < 0) y1 = 0;
+    if(x2 < 0) x2 = 0;
+    if(y2 < 0) y2 = 0;
+
+    int x;
+    int y;
+    int a;
+    int b;
+    if(x1<x2)
+    {
+        x = x1/BLOCK_SIZE - 1;
+        y = y1/BLOCK_SIZE - 1;
+        a = x2/BLOCK_SIZE + 1;
+        b = y2/BLOCK_SIZE + 1;
+    }
+    else
+    {
+        a = x1/BLOCK_SIZE;
+        b = y1/BLOCK_SIZE;
+        x = x2/BLOCK_SIZE;
+        y = y2/BLOCK_SIZE;
+    }
+
+    while (x < a)
+    {
+        dibuja_linea(x*BLOCK_SIZE, y*BLOCK_SIZE, a*BLOCK_SIZE, b*BLOCK_SIZE);
+        dibuja_rectangulo(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+        if(solape_recta_rect(x * BLOCK_SIZE,y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, x1, y1, x2, y2))
+        {
+            color_relleno(0, 0, 255, 255);
+            dibuja_linea(x1, y1, x2, y2);
+
+            printf("%d, %d \n%d, %d\n\n", x, y, a, b);
+            if(m->terreno[y][x] == 1)
+            {
+                printf("BLOCK\n");
+                return 1;
+            }
+            else
+                {
+                    while(!solape_recta_rect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, x1, y1, x2, y2))
+                    {
+                        printf("%d, %d \n%d, %d\n\n", x, y, a, b);
+                        if(y < b)
+                        {
+                            y = y + 1;
+                        }
+                        else if(y > b)
+                        {
+                            y = y - 1;
+                        }
+                    }
+                    x = x + 1;
+                }
+        }
+        else
+        {
+            x = x + 1;
+        }
+
+
+
+    }
+    return 0;
+
+
+}

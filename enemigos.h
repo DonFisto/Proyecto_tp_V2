@@ -13,7 +13,7 @@ void free_army(Ejercito e);
 
 void insert_enemy(Ejercito e, double x, double y, int type);
 
-void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r);
+void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r, Mapa m);
 
 void draw_army(Ejercito e);
 

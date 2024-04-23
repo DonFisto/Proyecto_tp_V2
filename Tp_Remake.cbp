@@ -69,6 +69,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="mapa.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mapa.h" />
 		<Unit filename="partida.c">
 			<Option compilerVar="CC" />
 		</Unit>

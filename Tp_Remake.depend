@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1711552303 source:c:\users\dmcvg\onedrive\documentos\tp_remake\colisiones.c
+1713908888 source:c:\users\dmcvg\onedrive\documentos\tp_remake\colisiones.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -11,6 +11,7 @@
 	"enemigos.h"
 	"consumibles.h"
 	"partida.h"
+	"mapa.h"
 
 1713457784 c:\users\dmcvg\onedrive\documentos\tp_remake\pantalla.h
 	"SDL2/SDL.h"
@@ -408,17 +409,19 @@
 	"begin_code.h"
 	"close_code.h"
 
-1713258895 c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.h
+1713856899 c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.h
 	"rafaga.h"
+	"mapa.h"
 
-1710771930 c:\users\dmcvg\onedrive\documentos\tp_remake\rafaga.h
+1713858750 c:\users\dmcvg\onedrive\documentos\tp_remake\rafaga.h
 	"colisiones.h"
+	"mapa.h"
 
-1710771930 c:\users\dmcvg\onedrive\documentos\tp_remake\colisiones.h
+1713886948 c:\users\dmcvg\onedrive\documentos\tp_remake\colisiones.h
 
-1713475109 c:\users\dmcvg\onedrive\documentos\tp_remake\constantes.h
+1713859193 c:\users\dmcvg\onedrive\documentos\tp_remake\constantes.h
 
-1713458717 source:c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.c
+1713857786 source:c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -430,6 +433,7 @@
 	"enemigos.h"
 	"consumibles.h"
 	"partida.h"
+	"mapa.h"
 
 1710771930 source:c:\users\dmcvg\onedrive\documentos\tp_remake\pantalla.c
 	"Pantalla.h"
@@ -438,7 +442,21 @@
 	<stdio.h>
 	<math.h>
 
-1711304753 source:c:\users\dmcvg\onedrive\documentos\tp_remake\rafaga.c
+1713859141 source:c:\users\dmcvg\onedrive\documentos\tp_remake\rafaga.c
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+	"Pantalla.h"
+	"jugador.h"
+	"constantes.h"
+	"colisiones.h"
+	"rafaga.h"
+	"enemigos.h"
+	"consumibles.h"
+	"partida.h"
+	"mapa.h"
+
+1713901935 source:c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -451,22 +469,9 @@
 	"consumibles.h"
 	"partida.h"
 
-1712677939 source:c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.c
-	<stdlib.h>
-	<stdio.h>
-	<math.h>
-	"Pantalla.h"
-	"jugador.h"
-	"constantes.h"
-	"colisiones.h"
-	"rafaga.h"
-	"enemigos.h"
-	"consumibles.h"
-	"partida.h"
+1713886948 c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.h
 
-1712677939 c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.h
-
-1713475020 source:c:\users\dmcvg\onedrive\documentos\tp_remake\main.c
+1713901038 source:c:\users\dmcvg\onedrive\documentos\tp_remake\main.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -495,9 +500,9 @@
 
 1711553224 c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.h
 
-1713457054 c:\users\dmcvg\onedrive\documentos\tp_remake\partida.h
+1713887118 c:\users\dmcvg\onedrive\documentos\tp_remake\partida.h
 
-1713474597 source:c:\users\dmcvg\onedrive\documentos\tp_remake\partida.c
+1713902265 source:c:\users\dmcvg\onedrive\documentos\tp_remake\partida.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -510,7 +515,7 @@
 	"consumibles.h"
 	"partida.h"
 
-1713474335 source:c:\users\dmcvg\onedrive\documentos\tp_remake\mapa.c
+1713908665 source:c:\users\dmcvg\onedrive\documentos\tp_remake\mapa.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -525,5 +530,5 @@
 	"mapa.h"
 	"string.h"
 
-1713470745 c:\users\dmcvg\onedrive\documentos\tp_remake\mapa.h
+1713899883 c:\users\dmcvg\onedrive\documentos\tp_remake\mapa.h
 

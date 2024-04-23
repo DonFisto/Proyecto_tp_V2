@@ -134,7 +134,7 @@ void army_generation(Partida p, Ejercito e, Jugador j);
   \param rj rafaga disparada por el jugador.
   \param re rafaga disparada por los enemigos.
  */
-void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re);
+void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re, Mapa m);
 
 /**
   \brief Regula el comportamiento del tesoro consumible.
@@ -152,7 +152,7 @@ void box_behavior(Partida p, Caja c, Jugador j);
   \param rj rafaga disparada por el jugador.
   \param re rafaga disparada por los enemigos.
  */
-void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c);
+void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m);
 
 /**
   \brief Regula el transcurso de la partida y coordina sus elementos.
@@ -162,7 +162,7 @@ void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c);
   \param rj rafaga disparada por el jugador.
   \param re rafaga disparada por los enemigos.
  */
-void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c);
+void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m);
 
 /**
   \brief Detecta cuando se hace click sobre un botón.

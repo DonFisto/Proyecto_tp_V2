@@ -91,13 +91,14 @@ void insert_enemy(Ejercito e, double x, double y, int type)
         e->ealive = e->ealive + 1;
     }
 }
-void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r)
+void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r, Mapa m)
 {
     for(int i = 0; i < e->ealive; i = i + 1)
     {
         double v = e->ej[i].v;
         double dp = distancia_punto_punto(e->ej[i].x, e->ej[i].y, jx, jy);
-        if (e->ej[i].reroute == 0 && (dp>e->ej[i].alert_dist||jinv != 0))
+
+        if (e->ej[i].reroute == 0 && (dp>e->ej[i].alert_dist || jinv != 0 || line_map_collision(m, e->ej[i].x, e->ej[i].y, jx, jy)))
         {
             e->ej[i].v = v;
             e->ej[i].dx = (rand()%100)/100.0;
@@ -118,7 +119,7 @@ void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r)
             }
             e->ej[i].reroute = 40;
         }
-        else if (e->ej[i].reroute == 0 && dp<=e->ej[i].alert_dist && jinv == 0)
+        else if (e->ej[i].reroute == 0 && dp<=e->ej[i].alert_dist && jinv == 0 && !line_map_collision(m, e->ej[i].x, e->ej[i].y, jx, jy))
         {
             if (e->ej[i].type == 0)
             {

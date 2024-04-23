@@ -5,6 +5,8 @@ typedef struct BalaRep * Bala;
 
 int dentro_rectangulo( double x, double y, double w, double h, double px, double py );
 
+int solape_recta_rect(double rx, double ry, double rw, double rh, double x1, double y1, double x2, double y2);
+
 double distancia_punto_punto( double x1, double y1, double x2, double y2 );
 
 int solape_rectangulos( double x1, double y1, double w1, double h1, double x2, double y2, double w2, double h2);

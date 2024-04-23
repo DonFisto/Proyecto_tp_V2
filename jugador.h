@@ -1,6 +1,7 @@
 #ifndef __jugador_H__
 #define __jugador_H__
 #include "rafaga.h"
+#include "mapa.h"
 typedef struct JugadorRep * Jugador;
 
 double get_player_pos_x(Jugador j);
@@ -45,6 +46,6 @@ void free_player(Jugador j);
 
 void draw_player(Jugador j);
 
-void move_player(Jugador j, Rafaga r);
+void move_player(Jugador j, Rafaga r, Mapa m);
 
 #endif

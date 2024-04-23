@@ -9,7 +9,7 @@
 #include "enemigos.h"
 #include "consumibles.h"
 #include "partida.h"
-
+#include "mapa.h"
 
 struct JugadorRep
 {
@@ -213,28 +213,37 @@ void check_bounds (Jugador j)
         j->y = -j->h + 1;
     }
 }
-void move_player(Jugador j, Rafaga r)
+void move_player(Jugador j, Rafaga r, Mapa m)
 {
 
+    if(!map_collision( m, j->x + j->vx*2/5, j->y, j->w, j->h))
+    {
+        j->x = j->x + j->vx*2/5;
+    }
+    if(!map_collision( m, j->x, j->y + j->vy*2/5, j->w, j->h))
+    {
+        j->y = j->y + j->vy*2/5;
+    }
+    /*
     j->x = j->x + j->vx*2/5;
     j->y = j->y + j->vy*2/5;
-
+    */
     check_bounds(j);
     apuntar2(j);
 
-    if(j->vx < 20 && tecla_pulsada(SDL_SCANCODE_D))
+    if(j->vx < 20 && tecla_pulsada(SDL_SCANCODE_D) && !map_collision( m, j->x + (j->vx+5)*2/5, j->y, j->w, j->h))
     {
         j->vx = j->vx + 5;
     }
-    if(j->vx > -20 && tecla_pulsada(SDL_SCANCODE_A))
+    if(j->vx > -20 && tecla_pulsada(SDL_SCANCODE_A) && !map_collision( m, j->x + (j->vx-5)*2/5, j->y, j->w, j->h))
     {
         j->vx = j->vx - 5;
     }
-    if(j->vy > -20 && tecla_pulsada(SDL_SCANCODE_W))
+    if(j->vy > -20 && tecla_pulsada(SDL_SCANCODE_W) && !map_collision( m, j->x, j->y + (j->vy-5)*2/5, j->w, j->h))
     {
         j->vy = j->vy - 5;
     }
-    if(j->vy < 20 && tecla_pulsada(SDL_SCANCODE_S))
+    if(j->vy < 20 && tecla_pulsada(SDL_SCANCODE_S) && !map_collision( m, j->x, j->y + (j->vy+5)*2/5, j->w, j->h))
     {
         j->vy = j->vy + 5;
     }
