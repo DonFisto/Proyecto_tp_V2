@@ -419,7 +419,7 @@
 
 1713886948 c:\users\dmcvg\onedrive\documentos\tp_remake\colisiones.h
 
-1713859193 c:\users\dmcvg\onedrive\documentos\tp_remake\constantes.h
+1713941929 c:\users\dmcvg\onedrive\documentos\tp_remake\constantes.h
 
 1713857786 source:c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.c
 	<stdlib.h>
@@ -456,7 +456,7 @@
 	"partida.h"
 	"mapa.h"
 
-1713901935 source:c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.c
+1713942414 source:c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -471,7 +471,7 @@
 
 1713886948 c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.h
 
-1713901038 source:c:\users\dmcvg\onedrive\documentos\tp_remake\main.c
+1713943707 source:c:\users\dmcvg\onedrive\documentos\tp_remake\main.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -500,9 +500,9 @@
 
 1711553224 c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.h
 
-1713887118 c:\users\dmcvg\onedrive\documentos\tp_remake\partida.h
+1713942698 c:\users\dmcvg\onedrive\documentos\tp_remake\partida.h
 
-1713902265 source:c:\users\dmcvg\onedrive\documentos\tp_remake\partida.c
+1713942708 source:c:\users\dmcvg\onedrive\documentos\tp_remake\partida.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -515,7 +515,7 @@
 	"consumibles.h"
 	"partida.h"
 
-1713908665 source:c:\users\dmcvg\onedrive\documentos\tp_remake\mapa.c
+1713941699 source:c:\users\dmcvg\onedrive\documentos\tp_remake\mapa.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>

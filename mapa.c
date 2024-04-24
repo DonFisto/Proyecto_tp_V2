@@ -452,7 +452,7 @@ int line_map_collision(Mapa m, double x1, double y1, double x2, double y2)
         int coordy = t/BLOCK_SIZE;
         if(solape_rectangulos(z, t, BLOCK_SIZE, BLOCK_SIZE, coordx * BLOCK_SIZE, coordy * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE) && m->terreno[coordy][coordx] == 1)
         {
-            dibuja_rectangulo(coordx * BLOCK_SIZE , coordy * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+            dibuja_rectangulo(coordx * BLOCK_SIZE, coordy * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
             return 1;
         }
 

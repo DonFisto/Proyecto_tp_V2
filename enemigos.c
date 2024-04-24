@@ -158,9 +158,18 @@ void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r, Mapa m)
         {
             e->ej[i].reroute--;
         }
+        if(!map_collision( m, e->ej[i].x + e->ej[i].v*e->ej[i].dx, e->ej[i].y, e->ej[i].w, e->ej[i].h))
+        {
+            e->ej[i].x = e->ej[i].x + e->ej[i].v*e->ej[i].dx;
+        }
+        if(!map_collision( m, e->ej[i].x, e->ej[i].y + e->ej[i].v*e->ej[i].dy, e->ej[i].w, e->ej[i].h))
+        {
+            e->ej[i].y = e->ej[i].y + e->ej[i].v*e->ej[i].dy;
+        }
+        /*
         e->ej[i].x = e->ej[i].x + e->ej[i].v*e->ej[i].dx;
         e->ej[i].y = e->ej[i].y + e->ej[i].v*e->ej[i].dy;
-
+        */
         if(e->ej[i].x >= W )
         {
             e->ej[i].x = -e->ej[i].w;

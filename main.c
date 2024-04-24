@@ -87,6 +87,7 @@ int main( int argc, char *argv[] )
             }
             else if(result == 3)
             {
+                save_map(m);
                 free_player(j);
                 free_army(e);
                 free_burst_shot(rj);

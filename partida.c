@@ -140,7 +140,7 @@ int check_end_game(Partida p, Jugador j)
     }
     return 0;
 }
-void army_generation(Partida p, Ejercito e, Jugador j)
+void army_generation(Partida p, Ejercito e, Jugador j, Mapa m)
 {
     int e0;
     int e1;
@@ -240,7 +240,7 @@ void army_generation(Partida p, Ejercito e, Jugador j)
     {
         int x = rand()%(W-40);
         int y = rand()%(H-40);
-        while(distancia_punto_punto((get_player_pos_x(j) + get_player_width(j)/2),(get_player_pos_y(j) + get_player_height(j)/2), x, y) < 500)
+        while(distancia_punto_punto((get_player_pos_x(j) + get_player_width(j)/2),(get_player_pos_y(j) + get_player_height(j)/2), x, y) < 500 || map_collision(m, x, y, 80, 80))
         {
             x = rand()%(W-40);
             y = rand()%(H-40);
@@ -276,7 +276,7 @@ void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re, Mapa 
     if(p->troundleft == 0)
     {
         p->round = p->round + 1;
-        army_generation(p, e, j);
+        army_generation(p, e, j, m);
         printf("-----ROUND %d-----\n",p->round);
         p->troundleft = TROUND;
     }

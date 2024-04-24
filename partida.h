@@ -124,7 +124,7 @@ int check_end_game(Partida p, Jugador j);
   \param e conjunto de enemigos de la partida.
   \param j jugador principal de la partida.
  */
-void army_generation(Partida p, Ejercito e, Jugador j);
+void army_generation(Partida p, Ejercito e, Jugador j, Mapa m);
 
 /**
   \brief Regula el comportamiento de los enemigos.
