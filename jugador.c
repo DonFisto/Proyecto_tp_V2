@@ -24,8 +24,8 @@ struct JugadorRep
     double ang;
     int energy;
     int vidas;
-    int pts;
     int invincibility;
+    int triple_shot;
     int cdown;
     int r;
     int g;
@@ -64,10 +64,6 @@ int get_player_lives(Jugador j)
 {
     return j->vidas;
 }
-int get_player_pts(Jugador j)
-{
-    return j->pts;
-}
 int get_player_inv(Jugador j)
 {
     return j->invincibility;
@@ -75,11 +71,6 @@ int get_player_inv(Jugador j)
 int get_player_cooldown(Jugador j)
 {
     return j->cdown;
-}
-void incr_pts(Jugador j, int p)
-{
-    j->pts = j->pts + p;
-    printf("%d\n",j->pts);
 }
 void dmg(Jugador j)
 {
@@ -93,14 +84,15 @@ void set_inv(Jugador j, int t)
 void set_energy(Jugador j, int e)
 {
     j->energy = e;
+    j->triple_shot = 0;
+}
+void set_triple_shot(Jugador j)
+{
+    j->triple_shot = 1;
 }
 void set_lives(Jugador j, int l)
 {
     j->vidas = l;
-}
-void set_pts(Jugador j, int p)
-{
-    j->pts = p;
 }
 void color_change(Jugador j)
 {
@@ -135,8 +127,8 @@ Jugador create_player()
     j->ang = 0;
     j->energy = 120;
     j->vidas = 5;
-    j->pts = 0;
     j->invincibility = 100;
+    j->triple_shot = 0;
     j->cdown = 10;
     j->r = 255;
     j->g = 0;
@@ -156,6 +148,11 @@ void draw_player(Jugador j)
         opacidad = opacidad/4;
         color_relleno(20, 209, 218, 70);
         dibuja_circulo(j->x + j->w/2, j->y + j->h/2, j->h/3*2);
+    }
+    if (j->triple_shot)
+    {
+        color_relleno(255, 0, 0, 70);
+        dibuja_rectangulo(j->x - j->w/5, j->y - j->w/5, j->w + j->w*2/5, j->h + j->w*2/5);
     }
     color_change(j);
     color_relleno( j->r, j->g, j->b, opacidad );
@@ -275,9 +272,21 @@ void move_player(Jugador j, Rafaga r, Mapa m)
     {
         Bala b = create_bullet(j->x+j->w/2,j->y + j->h/2, j->aimx, j->aimy, 45);
         insert_burst(r, b);
+        if(j->triple_shot)
+        {
+            Bala b1 = create_bullet(j->x+j->w/2,j->y + j->h/2, cos(j->ang + PI/45), sin(j->ang + PI/45), 45);
+            insert_burst(r, b1);
+            Bala b2 = create_bullet(j->x+j->w/2,j->y + j->h/2, cos(j->ang - PI/45), sin(j->ang - PI/45), 45);
+            insert_burst(r, b2);
+        }
         j->energy = j->energy - 5;
 
         j->cdown = 10;
+    }
+    if (j->triple_shot && j->energy <= 0)
+    {
+        j->energy = 0;
+        j->triple_shot = 0;
     }
     if(j->invincibility > 0)
     {

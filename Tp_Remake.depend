@@ -409,19 +409,19 @@
 	"begin_code.h"
 	"close_code.h"
 
-1713856899 c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.h
+1714429797 c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.h
 	"rafaga.h"
 	"mapa.h"
 
-1713858750 c:\users\dmcvg\onedrive\documentos\tp_remake\rafaga.h
+1714421284 c:\users\dmcvg\onedrive\documentos\tp_remake\rafaga.h
 	"colisiones.h"
 	"mapa.h"
 
-1713886948 c:\users\dmcvg\onedrive\documentos\tp_remake\colisiones.h
+1714415442 c:\users\dmcvg\onedrive\documentos\tp_remake\colisiones.h
 
-1713941929 c:\users\dmcvg\onedrive\documentos\tp_remake\constantes.h
+1714416395 c:\users\dmcvg\onedrive\documentos\tp_remake\constantes.h
 
-1713857786 source:c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.c
+1714430175 source:c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -469,9 +469,9 @@
 	"consumibles.h"
 	"partida.h"
 
-1713886948 c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.h
+1714427257 c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.h
 
-1713943707 source:c:\users\dmcvg\onedrive\documentos\tp_remake\main.c
+1714406106 source:c:\users\dmcvg\onedrive\documentos\tp_remake\main.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -485,7 +485,7 @@
 	"partida.h"
 	"mapa.h"
 
-1713458601 source:c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.c
+1714429816 source:c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -498,11 +498,11 @@
 	"consumibles.h"
 	"partida.h"
 
-1711553224 c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.h
+1714408725 c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.h
 
-1713942698 c:\users\dmcvg\onedrive\documentos\tp_remake\partida.h
+1714416307 c:\users\dmcvg\onedrive\documentos\tp_remake\partida.h
 
-1713942708 source:c:\users\dmcvg\onedrive\documentos\tp_remake\partida.c
+1714429668 source:c:\users\dmcvg\onedrive\documentos\tp_remake\partida.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -515,7 +515,7 @@
 	"consumibles.h"
 	"partida.h"
 
-1713941699 source:c:\users\dmcvg\onedrive\documentos\tp_remake\mapa.c
+1714416343 source:c:\users\dmcvg\onedrive\documentos\tp_remake\mapa.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>

@@ -3,24 +3,10 @@
 /**
 \mainpage Proyecto
 
-La biblioteca pantalla es un wrapper de la biblioteca SDL 2.0.
-Permite la escritura de programas gráficos interactivos sin necesidad de conocer muchos de los
-detalles de la visualización gráfica y de la programación dirigida por eventos típicos de SDL.
-Evidentemente, utilizando SDL directamente se pueden escribir programas más potentes y eficientes.
+Este proyecto consiste en el desarrollo de un videojuego empleando las metodologías y tecnicas estudiadas en la asignatura.
+El proyecto está programado usando el lenguaje C, desarrollado en el entorno Code::Blocks y hace uso de la biblioteca de funciones gráficas SDL.
 
-   El esquema básico para hacer una animación interactiva con esta biblioteca es el siguiente:<br/>
- <br/>mientras ( pantalla_activa( ) ) {
- <br/> &nbsp;&nbsp;&nbsp; Detectar los eventos que se hayan producido usando las funciones tecla_pulsada() o boton_raton_pulsado().
- <br/> &nbsp;&nbsp;&nbsp; Modificar el estado de la animación en función de los evantos detectados.
- <br/> &nbsp;&nbsp;&nbsp; Componer el siguiente frame de la animación usando las funciones de dibujo: dibuja_rectangulo(), dibuja_circulo(), dibuja_imagen(), etc.
- <br/> &nbsp;&nbsp;&nbsp; Mostrar el frame que se acaba de componer usando la función actualiza_pantalla().
- <br/> &nbsp;&nbsp;&nbsp; Esperar unos milisegundos utilizando la función espera() (40 para conseguir unos 25fps) para que de tiempo al ojo a ver lo que ha pasado.
- <br/>}
-
-Copyright © 2022 by Juan A. Sánchez Laguna
-
-Permission to use, copy, modify, and distribute this software and its documentation under the terms of the GNU General Public License is hereby granted. No representations are made about
-the suitability of this software for any purpose. It is provided "as is" without express or implied warranty. See the <a href="https://www.gnu.org/licenses/gpl.txt">GNU General Public License</a> for more details.
+Proyecto realizado por Daniel Martínez - Cabeza de Vaca Guillén curso 2023/2024 Tecnología de la programación
 
 
 */
@@ -110,6 +96,12 @@ void update_records(Partida p);
 Partida start_game();
 
 /**
+  \brief Libera una partida.
+  \param partida a liberar.
+ */
+void free_game(Partida p);
+
+/**
   \brief Indica si el juego está en curso en una partida
   \param p partida de la que se devuelve la información.
   \param j jugador principal de la partida
@@ -123,6 +115,7 @@ int check_end_game(Partida p, Jugador j);
   \param p partida actual.
   \param e conjunto de enemigos de la partida.
   \param j jugador principal de la partida.
+  \param m terreno en el que se desarrolla la partida.
  */
 void army_generation(Partida p, Ejercito e, Jugador j, Mapa m);
 
@@ -133,6 +126,7 @@ void army_generation(Partida p, Ejercito e, Jugador j, Mapa m);
   \param j jugador principal de la partida.
   \param rj rafaga disparada por el jugador.
   \param re rafaga disparada por los enemigos.
+  \param m terreno en el que se desarrolla la partida.
  */
 void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re, Mapa m);
 
@@ -151,6 +145,7 @@ void box_behavior(Partida p, Caja c, Jugador j);
   \param j jugador principal de la partida.
   \param rj rafaga disparada por el jugador.
   \param re rafaga disparada por los enemigos.
+  \param m terreno en el que se desarrolla la partida.
  */
 void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m);
 
@@ -161,6 +156,7 @@ void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, M
   \param j jugador principal de la partida.
   \param rj rafaga disparada por el jugador.
   \param re rafaga disparada por los enemigos.
+  \param m terreno en el que se desarrolla la partida.
  */
 void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m);
 
@@ -180,6 +176,7 @@ int button_click(double x, double y, double w, double h);
   \return 1 si se ha pulsado el botón que inicia el juego.
   \return 2 si se ha pulsado el botón que lleva al tutorial.
   \return 3 si se ha pulsado el botón de salida.
+  \return 4 si se ha pulsado el botón cambio de mapa.
  */
 int menu(Partida p);
 

@@ -128,6 +128,10 @@ Partida start_game()
     p->backg = lee_imagen("map4.bmp", 0);
     return p;
 }
+void free_game(Partida p)
+{
+    free(p);
+}
 int check_end_game(Partida p, Jugador j)
 {
     if(get_player_lives(j) == 0)
@@ -309,6 +313,7 @@ void box_behavior(Partida p, Caja c, Jugador j)
             set_lives(j, get_player_lives(j) + 1);
             break;
         case 3:
+            set_triple_shot(j);
             break;
         }
         move_box(c);

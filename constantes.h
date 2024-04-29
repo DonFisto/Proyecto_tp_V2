@@ -7,7 +7,7 @@
 #define PI 3.14159265358979323846
 #define T_MAX_EJERCITO 15
 #define TROUND 500
-#define BLOCK_SIZE 15
+#define BLOCK_SIZE 30
 /**
    \file constantes.h
    \brief  El modulo constantes recoge los datos constantes que se utilizan repetidamente en los distintos componentes del proyecto.

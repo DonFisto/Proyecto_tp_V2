@@ -14,11 +14,12 @@
 struct MapaRep
 {
     int terreno[H/BLOCK_SIZE*2][W/BLOCK_SIZE*2];
-
+    Imagen tile;
 };
 Mapa create_map()
 {
     Mapa nuevo = malloc(sizeof(struct MapaRep));
+    nuevo->tile = lee_imagen("space-wall-tile.bmp",1);
     return nuevo;
 }
 void reset_map(Mapa m)
@@ -371,7 +372,8 @@ void draw_map(Mapa m)
             if(m->terreno[i][j]==1)
             {
                 color_relleno(255, 255, 255, 255);
-                dibuja_rectangulo(j * BLOCK_SIZE, i * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+                //dibuja_rectangulo(j * BLOCK_SIZE, i * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+                dibuja_imagen(m->tile, j * BLOCK_SIZE, i * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE );
             }
         }
 
@@ -447,12 +449,11 @@ int line_map_collision(Mapa m, double x1, double y1, double x2, double y2)
         //(a-x)/(b-y) = (z-x)/(t-y)
         t = ((b-y) * (z-x) / (a-x) + y);
         color_relleno(0, 0, 255, 255);
-        dibuja_rectangulo(z , t, BLOCK_SIZE, BLOCK_SIZE);
         int coordx = z/BLOCK_SIZE;
         int coordy = t/BLOCK_SIZE;
         if(solape_rectangulos(z, t, BLOCK_SIZE, BLOCK_SIZE, coordx * BLOCK_SIZE, coordy * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE) && m->terreno[coordy][coordx] == 1)
         {
-            dibuja_rectangulo(coordx * BLOCK_SIZE, coordy * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+            m->terreno[coordy][coordx] = 1;
             return 1;
         }
 
@@ -460,75 +461,4 @@ int line_map_collision(Mapa m, double x1, double y1, double x2, double y2)
 
     }
     return 0;
-}
-
-int line_map_collision2(Mapa m, double x1, double y1, double x2, double y2)
-{
-    if(x1 < 0) x1 = 0;
-    if(y1 < 0) y1 = 0;
-    if(x2 < 0) x2 = 0;
-    if(y2 < 0) y2 = 0;
-
-    int x;
-    int y;
-    int a;
-    int b;
-    if(x1<x2)
-    {
-        x = x1/BLOCK_SIZE - 1;
-        y = y1/BLOCK_SIZE - 1;
-        a = x2/BLOCK_SIZE + 1;
-        b = y2/BLOCK_SIZE + 1;
-    }
-    else
-    {
-        a = x1/BLOCK_SIZE;
-        b = y1/BLOCK_SIZE;
-        x = x2/BLOCK_SIZE;
-        y = y2/BLOCK_SIZE;
-    }
-
-    while (x < a)
-    {
-        dibuja_linea(x*BLOCK_SIZE, y*BLOCK_SIZE, a*BLOCK_SIZE, b*BLOCK_SIZE);
-        dibuja_rectangulo(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
-        if(solape_recta_rect(x * BLOCK_SIZE,y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, x1, y1, x2, y2))
-        {
-            color_relleno(0, 0, 255, 255);
-            dibuja_linea(x1, y1, x2, y2);
-
-            printf("%d, %d \n%d, %d\n\n", x, y, a, b);
-            if(m->terreno[y][x] == 1)
-            {
-                printf("BLOCK\n");
-                return 1;
-            }
-            else
-                {
-                    while(!solape_recta_rect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, x1, y1, x2, y2))
-                    {
-                        printf("%d, %d \n%d, %d\n\n", x, y, a, b);
-                        if(y < b)
-                        {
-                            y = y + 1;
-                        }
-                        else if(y > b)
-                        {
-                            y = y - 1;
-                        }
-                    }
-                    x = x + 1;
-                }
-        }
-        else
-        {
-            x = x + 1;
-        }
-
-
-
-    }
-    return 0;
-
-
 }

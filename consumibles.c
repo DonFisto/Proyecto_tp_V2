@@ -46,7 +46,7 @@ void move_box(Caja c)
 {
     c->x = rand()%(W-40);
     c->y = rand()%(H-40);
-    c->type = rand()%3;
+    c->type = rand()%4;
 }
 void draw_box(Caja c)
 {
@@ -67,6 +67,11 @@ void draw_box(Caja c)
     else if(c->type == 2)
     {
         color_relleno(255, 0, 0, 255);
+        dibuja_rectangulo(c->x + c->w/3, c->y + c->h/3, c->w/3, c->h/3);
+    }
+    else if(c->type == 3)
+    {
+        color_relleno(115, 0, 255, 255);
         dibuja_rectangulo(c->x + c->w/3, c->y + c->h/3, c->w/3, c->h/3);
     }
 
