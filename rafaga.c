@@ -10,6 +10,7 @@
 #include "consumibles.h"
 #include "partida.h"
 #include "mapa.h"
+#include "camara.h"
 
 struct NodoBala
 {
@@ -42,7 +43,7 @@ void insert_burst(Rafaga r, Bala b)
     nuevo->sig = r->sig;
     r->sig = nuevo;
 }
-void move_burst_shot(Rafaga r, Mapa m)
+void move_burst_shot(Rafaga r, Mapa m, Camara cam)
 {
     Rafaga aux = r;
     double x;
@@ -54,7 +55,7 @@ void move_burst_shot(Rafaga r, Mapa m)
         x = get_bullet_x(aux->sig->b);
         y = get_bullet_y(aux->sig->b);
         rad = get_bullet_rad(aux->sig->b);
-        if(x >= W+rad || x <=-rad || y >= H + rad || y <= -rad || map_collision(m, x, y, rad*2, rad*2))
+        if(x >= W+rad || x <=-rad || y >= H + rad || y <= -rad || map_collision(m, cam, x, y, rad*2, rad*2))
         {
             Rafaga borrar = aux->sig;
             aux->sig = borrar->sig;
@@ -67,14 +68,16 @@ void move_burst_shot(Rafaga r, Mapa m)
         }
     }
 }
-void draw_burst_shot(Rafaga r)
+void draw_burst_shot(Rafaga r, Camara cam)
 {
+    double offset_x = get_cam_x(cam);
+    double offset_y = get_cam_y(cam);
     color_relleno(255, 0, 0, 255);
     Rafaga aux = r;
     while(aux->sig != NULL)
     {
         aux = aux->sig;
-        dibuja_circulo(get_bullet_x(aux->b), get_bullet_y(aux->b), get_bullet_rad(aux->b));
+        dibuja_circulo(get_bullet_x(aux->b) - offset_x, get_bullet_y(aux->b) - offset_y, get_bullet_rad(aux->b));
     }
 }
 int burst_shot_lenght(Rafaga r)

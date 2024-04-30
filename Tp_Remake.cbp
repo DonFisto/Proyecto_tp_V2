@@ -49,6 +49,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Pantalla.h" />
+		<Unit filename="camara.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="camara.h" />
 		<Unit filename="colisiones.c">
 			<Option compilerVar="CC" />
 		</Unit>

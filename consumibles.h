@@ -49,6 +49,7 @@ int box_collision(Caja c, double x, double y, double w, double h);
 /**
   \brief Cambia de posición una caja.
   \param c caja a mover.
+  \param cam cámara de la partida.
  */
 void move_box(Caja c);
 
@@ -56,6 +57,6 @@ void move_box(Caja c);
   \brief Dibuja una caja.
   \param c caja a dibujar.
  */
-void draw_box(Caja c);
+void draw_box(Caja c, Camara cam);
 
 #endif

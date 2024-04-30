@@ -10,21 +10,23 @@
 #include "consumibles.h"
 #include "partida.h"
 #include "mapa.h"
+#include "camara.h"
 
 int main( int argc, char *argv[] )
 {
 
-    crea_pantalla( "Ejemplo 2", W,H );
+    crea_pantalla( "Ejemplo 2", CAMERA_W, CAMERA_H);
     printf("* * * * * INICIO JUEGO * * * * *\n\n\n\n\n");
     Mapa m = create_map();
     reset_map(m);
-    generate_map(m, 100);
+    generate_map(m, 200);
     Partida p = start_game();
     Jugador j = create_player();
     Ejercito e = create_army();
     Rafaga rj = create_burst_shot();
     Rafaga re = create_burst_shot();
     Caja c = create_box();
+    Camara cam = create_camera(0, 0);
     end_game(p);
     int spam_check = 1;
 
@@ -35,14 +37,14 @@ int main( int argc, char *argv[] )
             if(!get_game_pause(p))
             {
             rellena_fondo( 255,255,255, 255 );
-            game(p, j, e, rj, re, c, m);
-            draw_game(p, j, e, rj, re, c, m);
+            game(p, j, e, rj, re, c, m, cam);
+            draw_game(p, j, e, rj, re, c, m, cam);
             }
             else
             {
                 if(get_game_pause(p))
                 {
-                draw_game(p, j, e, rj, re, c, m);
+                draw_game(p, j, e, rj, re, c, m, cam);
                 int outcome = pause_menu(p);
                    if(outcome == 1)
                    {
@@ -58,7 +60,7 @@ int main( int argc, char *argv[] )
                 }
             }
             actualiza_pantalla();
-            espera( 15 );
+            espera(10);
 
 
         }
@@ -74,7 +76,7 @@ int main( int argc, char *argv[] )
         {
 
             rellena_fondo( 255,255,255, 255 );
-            draw_map_menu(m, 0, 250);
+            draw_minimap(m, 0, 0, 4);
             int result = menu(p);
             if(result == 1)
             {
@@ -98,7 +100,7 @@ int main( int argc, char *argv[] )
             else if(result == 4)
             {
                 reset_map(m);
-                generate_map(m, 100);
+                generate_map(m, 200);
                 spam_check = 1;
             }
             actualiza_pantalla();

@@ -10,6 +10,7 @@
 #include "consumibles.h"
 #include "partida.h"
 #include "mapa.h"
+#include "camara.h"
 #include "string.h"
 struct MapaRep
 {
@@ -19,7 +20,7 @@ struct MapaRep
 Mapa create_map()
 {
     Mapa nuevo = malloc(sizeof(struct MapaRep));
-    nuevo->tile = lee_imagen("space-wall-tile.bmp",1);
+    nuevo->tile = lee_imagen("space-wall-tile_11zon.bmp",1);
     return nuevo;
 }
 void reset_map(Mapa m)
@@ -110,9 +111,9 @@ void generate_map(Mapa m, int n)
     int posiciones[9];
     while (placed < n)
     {
-        structure_pieces_left = 100;
-        x = rand()%100;
-        y = rand()%50;
+        structure_pieces_left = 10;
+        x = rand()%W/BLOCK_SIZE;
+        y = rand()%H/BLOCK_SIZE;
         check_free_3x3(m, x, y, posiciones);
         if (posiciones[4] == 0)
         {
@@ -363,24 +364,28 @@ void generate_map(Mapa m, int n)
         }
     }
 }
-void draw_map(Mapa m)
+void draw_map(Mapa m, Camara cam)
 {
+    double offset_x = get_cam_x(cam);
+    double offset_y = get_cam_y(cam);
     for(int i = 0; i < H/BLOCK_SIZE; i = i + 1)
     {
         for(int j = 0; j < W/BLOCK_SIZE; j = j + 1)
         {
-            if(m->terreno[i][j]==1)
+            if((j * BLOCK_SIZE - offset_x < CAMERA_W && i * BLOCK_SIZE - offset_y < CAMERA_H) && m->terreno[i][j]==1)
             {
                 color_relleno(255, 255, 255, 255);
                 //dibuja_rectangulo(j * BLOCK_SIZE, i * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
-                dibuja_imagen(m->tile, j * BLOCK_SIZE, i * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE );
+                dibuja_imagen(m->tile, j * BLOCK_SIZE - offset_x, i * BLOCK_SIZE - offset_y, BLOCK_SIZE, BLOCK_SIZE );
             }
         }
 
     }
 }
-void draw_map_menu(Mapa m, int x, int y)
+void draw_minimap(Mapa m, int x, int y, int scale)
 {
+    color_relleno(255, 255, 255, 70);
+    dibuja_rectangulo(x, y, W/scale, H/scale);
     for(int i = 0; i < H/BLOCK_SIZE; i = i + 1)
     {
         for(int j = 0; j < W/BLOCK_SIZE; j = j + 1)
@@ -388,25 +393,27 @@ void draw_map_menu(Mapa m, int x, int y)
             if(m->terreno[i][j]==1)
             {
                 color_relleno(255, 0, 0, 255);
-                dibuja_rectangulo(x + j * BLOCK_SIZE/3, y + i * BLOCK_SIZE/3, BLOCK_SIZE/3, BLOCK_SIZE/3);
+                dibuja_rectangulo(x + j * BLOCK_SIZE/scale, y + i * BLOCK_SIZE/scale, BLOCK_SIZE/scale, BLOCK_SIZE/scale);
             }
         }
 
     }
 }
 
-int map_collision(Mapa m, double x, double y, double w, double h)
+int map_collision(Mapa m, Camara cam, double x, double y, double w, double h)
 {
+    double offset_x = get_cam_x(cam);
+    double offset_y = get_cam_y(cam);
     int cord_x = x/BLOCK_SIZE;
     int cord_y = y/BLOCK_SIZE;
-    if (cord_x <= 99 && cord_x > 0 && cord_y <= 49 && cord_y > 0)
+    if (cord_x <= W/BLOCK_SIZE - 1 && cord_x > 0 && cord_y <= H/BLOCK_SIZE - 1 && cord_y > 0)
     {
         if (solape_rectangulos(cord_x * BLOCK_SIZE, cord_y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, x, y, w, h)&& m->terreno[cord_y][cord_x] == 1)return 1;
         for(int i = cord_y; i < y; i = i + 1)
         {
             for(int j = cord_x; j < x; j = j + 1)
             {
-                if (solape_rectangulos(j * BLOCK_SIZE, i * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, x, y, w, h) && m->terreno[i][j] == 1)return 1;
+                if ((j * BLOCK_SIZE - offset_x < CAMERA_W && i * BLOCK_SIZE - offset_y < CAMERA_H) && solape_rectangulos(j * BLOCK_SIZE, i * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, x, y, w, h) && m->terreno[i][j] == 1)return 1;
             }
         }
     }

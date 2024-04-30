@@ -2,8 +2,8 @@
 #define __enemigos_H__
 
 /**
-   \file ejercito.h
-   \brief  Fichero de cabecera para poder usar las funciones del módulo ejercito
+   \file enemigos.h
+   \brief  Fichero de cabecera para poder usar las funciones del módulo enemigos
 */
 
 /**
@@ -54,14 +54,16 @@ void insert_enemy(Ejercito e, double x, double y, int type);
   \param jinv parámetro de invencibilidad del jugador.
   \param r rafaga disparada por los enemigos.
   \param m terreno en el que se desarrolla la partida.
+  \param cam cámara de la partida.
  */
-void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r, Mapa m);
+void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r, Mapa m, Camara cam);
 
 /**
   \brief Dibuja un ejército.
   \param e ejército a dibujar.
+  \param cam cámara de la partida.
  */
-void draw_army(Ejercito e);
+void draw_army(Ejercito e, Camara cam);
 
 /**
   \brief Detecta la colisión de un ejército con un rectángulo.

@@ -116,8 +116,9 @@ int check_end_game(Partida p, Jugador j);
   \param e conjunto de enemigos de la partida.
   \param j jugador principal de la partida.
   \param m terreno en el que se desarrolla la partida.
+  \param cam cámara de la partida.
  */
-void army_generation(Partida p, Ejercito e, Jugador j, Mapa m);
+void army_generation(Partida p, Ejercito e, Jugador j, Mapa m, Camara cam);
 
 /**
   \brief Regula el comportamiento de los enemigos.
@@ -127,8 +128,9 @@ void army_generation(Partida p, Ejercito e, Jugador j, Mapa m);
   \param rj rafaga disparada por el jugador.
   \param re rafaga disparada por los enemigos.
   \param m terreno en el que se desarrolla la partida.
+  \param cam cámara de la partida.
  */
-void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re, Mapa m);
+void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re, Mapa m, Camara cam);
 
 /**
   \brief Regula el comportamiento del tesoro consumible.
@@ -146,8 +148,9 @@ void box_behavior(Partida p, Caja c, Jugador j);
   \param rj rafaga disparada por el jugador.
   \param re rafaga disparada por los enemigos.
   \param m terreno en el que se desarrolla la partida.
+  \param cam cámara de la partida.
  */
-void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m);
+void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m, Camara cam);
 
 /**
   \brief Regula el transcurso de la partida y coordina sus elementos.
@@ -157,8 +160,9 @@ void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, M
   \param rj rafaga disparada por el jugador.
   \param re rafaga disparada por los enemigos.
   \param m terreno en el que se desarrolla la partida.
+  \param cam cámara de la partida.
  */
-void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m);
+void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m, Camara cam);
 
 /**
   \brief Detecta cuando se hace click sobre un botón.

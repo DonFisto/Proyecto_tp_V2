@@ -13,13 +13,13 @@ void read_map(Mapa m);
 
 void print_map(Mapa m);
 
-void draw_map(Mapa m);
+void draw_map(Mapa m, Camara cam);
 
-void draw_map_menu(Mapa m, int x, int y);
+void draw_minimap(Mapa m, int x, int y, int scale);
 
 void generate_map(Mapa m, int n);
 
-int map_collision(Mapa m, double x, double y, double w, double h);
+int map_collision(Mapa m, Camara cam, double x, double y, double w, double h);
 
 int line_map_collision(Mapa m, double x1, double y1, double x2, double y2);
 

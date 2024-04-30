@@ -1,5 +1,6 @@
 #ifndef __jugador_H__
 #define __jugador_H__
+#include "camara.h"
 #include "rafaga.h"
 #include "mapa.h"
 
@@ -138,15 +139,17 @@ void free_player(Jugador j);
 /**
   \brief Dibuja un jugador.
   \param jugador a dibujar.
+  \param cam cámara de la partida.
  */
-void draw_player(Jugador j);
+void draw_player(Jugador j, Camara cam);
 
 /**
   \brief Mueve un jugador.
   \param j jugador a mover.
   \param r rafaga disparada por los jugadores.
   \param m terreno en el que se desarrolla la partida.
+  \param cam cámara de la partida.
  */
-void move_player(Jugador j, Rafaga r, Mapa m);
+void move_player(Jugador j, Rafaga r, Mapa m, Camara cam);
 
 #endif

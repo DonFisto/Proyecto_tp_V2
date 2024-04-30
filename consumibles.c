@@ -9,6 +9,8 @@
 #include "enemigos.h"
 #include "consumibles.h"
 #include "partida.h"
+#include "mapa.h"
+#include "camara.h"
 
 struct CajaRep
 {
@@ -48,31 +50,34 @@ void move_box(Caja c)
     c->y = rand()%(H-40);
     c->type = rand()%4;
 }
-void draw_box(Caja c)
+void draw_box(Caja c, Camara cam)
 {
+    double offset_x = get_cam_x(cam);
+    double offset_y = get_cam_y(cam);
     color_relleno(0,255,0,255);
-    dibuja_rectangulo(c->x, c->y, c->w, c->h);
+    dibuja_rectangulo(c->x - offset_x, c->y - offset_y, c->w, c->h);
     if(c->type == 0)
     {
         color_relleno(162, 103, 18, 255);
-        dibuja_circulo(c->x + c->w/3*2,c->y + c->h/2 - 0.0005, 6.1);
+        dibuja_circulo(c->x + c->w/3*2 - offset_x,c->y + c->h/2 - 0.0005 - offset_y, 6.1);
         color_relleno(50, 50, 50, 255);
-        dibuja_rectangulo(c->x + c->w/4, c->y + c->h/3, c->w/3 + c->w/12, c->h/3);
+        dibuja_rectangulo(c->x + c->w/4 - offset_x, c->y + c->h/3 - offset_y, c->w/3 + c->w/12, c->h/3);
     }
     else if(c->type == 1)
     {
         color_relleno(20, 209, 218, 255);
-        dibuja_circulo(c->x + c->w/2, c->y + c->h/2, c->w/4);
+        dibuja_circulo(c->x + c->w/2 - offset_x, c->y + c->h/2 - offset_y, c->w/4);
     }
     else if(c->type == 2)
     {
         color_relleno(255, 0, 0, 255);
-        dibuja_rectangulo(c->x + c->w/3, c->y + c->h/3, c->w/3, c->h/3);
+        dibuja_rectangulo(c->x + c->w/3 - offset_x, c->y + c->h/4 - offset_y, c->w/3, c->h/2);
+        dibuja_rectangulo(c->x + c->w/4 - offset_x, c->y + c->h/3 - offset_y, c->w/2, c->h/3);
     }
     else if(c->type == 3)
     {
         color_relleno(115, 0, 255, 255);
-        dibuja_rectangulo(c->x + c->w/3, c->y + c->h/3, c->w/3, c->h/3);
+        dibuja_rectangulo(c->x + c->w/3 - offset_x, c->y + c->h/3 - offset_y, c->w/3, c->h/3);
     }
 
 

@@ -9,6 +9,8 @@
 #include "enemigos.h"
 #include "consumibles.h"
 #include "partida.h"
+#include "mapa.h"
+#include "camara.h"
 
 typedef char * Nombre;
 struct Leaderboard
@@ -144,7 +146,7 @@ int check_end_game(Partida p, Jugador j)
     }
     return 0;
 }
-void army_generation(Partida p, Ejercito e, Jugador j, Mapa m)
+void army_generation(Partida p, Ejercito e, Jugador j, Mapa m, Camara cam)
 {
     int e0;
     int e1;
@@ -244,7 +246,7 @@ void army_generation(Partida p, Ejercito e, Jugador j, Mapa m)
     {
         int x = rand()%(W-40);
         int y = rand()%(H-40);
-        while(distancia_punto_punto((get_player_pos_x(j) + get_player_width(j)/2),(get_player_pos_y(j) + get_player_height(j)/2), x, y) < 500 || map_collision(m, x, y, 80, 80))
+        while(distancia_punto_punto((get_player_pos_x(j) + get_player_width(j)/2),(get_player_pos_y(j) + get_player_height(j)/2), x, y) < 500 || map_collision(m, cam, x, y, 80, 80))
         {
             x = rand()%(W-40);
             y = rand()%(H-40);
@@ -269,9 +271,9 @@ void army_generation(Partida p, Ejercito e, Jugador j, Mapa m)
 
 
 }
-void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re, Mapa m)
+void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re, Mapa m, Camara cam)
 {
-    move_army(e, get_player_pos_x(j), get_player_pos_y(j), get_player_inv(j), re, m);
+    move_army(e, get_player_pos_x(j), get_player_pos_y(j), get_player_inv(j), re, m, cam);
     if ((object_army_collision(e, get_player_pos_x(j), get_player_pos_y(j), get_player_width(j), get_player_height(j))||(burst_shot_collision(re, get_player_pos_x(j), get_player_pos_y(j), get_player_width(j), get_player_height(j))))&&(!get_player_inv(j)))
     {
         dmg(j);
@@ -280,7 +282,7 @@ void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re, Mapa 
     if(p->troundleft == 0)
     {
         p->round = p->round + 1;
-        army_generation(p, e, j, m);
+        army_generation(p, e, j, m, cam);
         printf("-----ROUND %d-----\n",p->round);
         p->troundleft = TROUND;
     }
@@ -319,29 +321,33 @@ void box_behavior(Partida p, Caja c, Jugador j)
         move_box(c);
     }
 }
-void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m)
+void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m, Camara cam)
 {
     dibuja_imagen(p->backg, -50.0, -75, 1600, 900);
-    draw_map(m);
+    draw_map(m, cam);
     char msg[15];
     dibuja_rectangulo(5, 5, 200, 20);
     sprintf(msg, "vidas: %d\n", get_player_lives(j));
     dibuja_texto(msg, 10, 10);
     sprintf(msg,"pts: %d\n", get_game_pts(p) );
     dibuja_texto(msg, 100, 10);
-    draw_player(j);
-    draw_army(e);
-    draw_burst_shot(rj);
-    draw_burst_shot(re);
-    draw_box(c);
+    draw_minimap(m, CAMERA_W - W/20, 0, 20);
+    color_relleno(0, 0, 255, 100);
+    dibuja_circulo(get_player_pos_x(j)/W*CAMERA_W/5 + CAMERA_W - W/20, get_player_pos_y(j)/H*CAMERA_H/5, 5);
+    draw_player(j, cam);
+    draw_army(e, cam);
+    draw_burst_shot(rj, cam);
+    draw_burst_shot(re, cam);
+    draw_box(c, cam);
 
 }
-void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m)
+void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m, Camara cam)
 {
-    move_player(j, rj, m);
-    army_behavior(p, e, j, rj, re, m);
-    move_burst_shot(rj, m);
-    move_burst_shot(re, m);
+    move_player(j, rj, m, cam);
+    army_behavior(p, e, j, rj, re, m, cam);
+    move_burst_shot(rj, m, cam);
+    move_burst_shot(re, m, cam);
+    camera_follow(cam, get_player_pos_x(j), get_player_pos_y(j));
     box_behavior(p, c, j);
     if(tecla_pulsada(SDL_SCANCODE_ESCAPE))
     {

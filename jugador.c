@@ -10,6 +10,7 @@
 #include "consumibles.h"
 #include "partida.h"
 #include "mapa.h"
+#include "camara.h"
 
 struct JugadorRep
 {
@@ -89,6 +90,7 @@ void set_energy(Jugador j, int e)
 void set_triple_shot(Jugador j)
 {
     j->triple_shot = 1;
+    j->energy = 120;
 }
 void set_lives(Jugador j, int l)
 {
@@ -140,26 +142,28 @@ void free_player(Jugador j)
 {
     free(j);
 }
-void draw_player(Jugador j)
+void draw_player(Jugador j, Camara cam)
 {
+    double offset_x = get_cam_x(cam);
+    double offset_y = get_cam_y(cam);
     int opacidad = 255;
     if (j->invincibility)
     {
         opacidad = opacidad/4;
         color_relleno(20, 209, 218, 70);
-        dibuja_circulo(j->x + j->w/2, j->y + j->h/2, j->h/3*2);
+        dibuja_circulo(j->x + j->w/2 - offset_x, j->y + j->h/2 - offset_y, j->h/3*2);
     }
     if (j->triple_shot)
     {
         color_relleno(255, 0, 0, 70);
-        dibuja_rectangulo(j->x - j->w/5, j->y - j->w/5, j->w + j->w*2/5, j->h + j->w*2/5);
+        dibuja_rectangulo(j->x - j->w/5 - offset_x, j->y - j->w/5 - offset_y, j->w + j->w*2/5, j->h + j->w*2/5);
     }
     color_change(j);
     color_relleno( j->r, j->g, j->b, opacidad );
-    dibuja_rectangulo( j->x,j->y, j->w,j->h );
+    dibuja_rectangulo( j->x - offset_x,j->y - offset_y, j->w,j->h );
     color_relleno(6, 150, 150, 255);
-    dibuja_rectangulo(j->x, j->y-10, j->energy/120.0 * j->w, 5);
-    dibuja_imagen_transformada(j->img,(j->x + j->w/2 + 19*j->aimx - 19),(j->y + j->h/2 + 19*j->aimy - 42),38,84,j->ang*360/(2*PI) + 90, 1 );
+    dibuja_rectangulo(j->x - offset_x, j->y-10 - offset_y, j->energy/120.0 * j->w, 5);
+    dibuja_imagen_transformada(j->img,(j->x + j->w/2 + 19*j->aimx - 19 - offset_x),(j->y + j->h/2 + 19*j->aimy - 42 - offset_y),38,84,j->ang*360/(2*PI) + 90, 1 );
 
 }
 void apuntar2(Jugador j)
@@ -210,14 +214,14 @@ void check_bounds (Jugador j)
         j->y = -j->h + 1;
     }
 }
-void move_player(Jugador j, Rafaga r, Mapa m)
+void move_player(Jugador j, Rafaga r, Mapa m, Camara cam)
 {
 
-    if(!map_collision( m, j->x + j->vx*2/5, j->y, j->w, j->h))
+    if(!map_collision( m, cam, j->x + j->vx*2/5, j->y, j->w, j->h))
     {
         j->x = j->x + j->vx*2/5;
     }
-    if(!map_collision( m, j->x, j->y + j->vy*2/5, j->w, j->h))
+    if(!map_collision( m, cam, j->x, j->y + j->vy*2/5, j->w, j->h))
     {
         j->y = j->y + j->vy*2/5;
     }
@@ -228,19 +232,19 @@ void move_player(Jugador j, Rafaga r, Mapa m)
     check_bounds(j);
     apuntar2(j);
 
-    if(j->vx < 20 && tecla_pulsada(SDL_SCANCODE_D) && !map_collision( m, j->x + (j->vx+5)*2/5, j->y, j->w, j->h))
+    if(j->vx < 20 && tecla_pulsada(SDL_SCANCODE_D) && !map_collision( m, cam, j->x + (j->vx+5)*2/5, j->y, j->w, j->h))
     {
         j->vx = j->vx + 5;
     }
-    if(j->vx > -20 && tecla_pulsada(SDL_SCANCODE_A) && !map_collision( m, j->x + (j->vx-5)*2/5, j->y, j->w, j->h))
+    if(j->vx > -20 && tecla_pulsada(SDL_SCANCODE_A) && !map_collision( m, cam, j->x + (j->vx-5)*2/5, j->y, j->w, j->h))
     {
         j->vx = j->vx - 5;
     }
-    if(j->vy > -20 && tecla_pulsada(SDL_SCANCODE_W) && !map_collision( m, j->x, j->y + (j->vy-5)*2/5, j->w, j->h))
+    if(j->vy > -20 && tecla_pulsada(SDL_SCANCODE_W) && !map_collision( m, cam, j->x, j->y + (j->vy-5)*2/5, j->w, j->h))
     {
         j->vy = j->vy - 5;
     }
-    if(j->vy < 20 && tecla_pulsada(SDL_SCANCODE_S) && !map_collision( m, j->x, j->y + (j->vy+5)*2/5, j->w, j->h))
+    if(j->vy < 20 && tecla_pulsada(SDL_SCANCODE_S) && !map_collision( m, cam, j->x, j->y + (j->vy+5)*2/5, j->w, j->h))
     {
         j->vy = j->vy + 5;
     }

@@ -1,13 +1,6 @@
 #ifndef __constantes_H__
 #define __constantes_H__
 
-#define W 1500
-#define H 750
-#define LB_SIZE 10
-#define PI 3.14159265358979323846
-#define T_MAX_EJERCITO 15
-#define TROUND 500
-#define BLOCK_SIZE 30
 /**
    \file constantes.h
    \brief  El modulo constantes recoge los datos constantes que se utilizan repetidamente en los distintos componentes del proyecto.
@@ -20,4 +13,15 @@
  <br/> TROUND: define el tiempo que dura cada ronda
 
 */
+#define W 6000
+#define H 3000
+#define LB_SIZE 10
+#define PI 3.14159265358979323846
+#define T_MAX_EJERCITO 15
+#define TROUND 500
+#define BLOCK_SIZE 30
+#define CAMERA_W 1500
+#define CAMERA_H 750
+#define CAMERA_TRACKING_SPEED 3
+
 #endif

@@ -35,14 +35,16 @@ void insert_burst(Rafaga r, Bala b);
   \brief Mueve una ráfaga.
   \param r ráfaga a mover.
   \param m terreno sobre el que se mueve la ráfaga.
+  \param cam cámara de la partida.
  */
-void move_burst_shot(Rafaga r, Mapa m);
+void move_burst_shot(Rafaga r, Mapa m, Camara cam);
 
 /**
   \brief Dibuja una ráfaga.
   \param r ráfaga a dibujar.
+  \param cam cámara de la partida.
  */
-void draw_burst_shot(Rafaga r);
+void draw_burst_shot(Rafaga r, Camara cam);
 
 /**
   \brief Devuelve la longitud de una ráfaga.

@@ -10,6 +10,7 @@
 #include "consumibles.h"
 #include "partida.h"
 #include "mapa.h"
+#include "camara.h"
 
 
 struct BalaRep

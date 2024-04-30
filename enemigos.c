@@ -9,7 +9,8 @@
 #include "enemigos.h"
 #include "consumibles.h"
 #include "partida.h"
-
+#include "mapa.h"
+#include "camara.h"
 
 struct EnemigoRep
 {
@@ -91,7 +92,7 @@ void insert_enemy(Ejercito e, double x, double y, int type)
         e->ealive = e->ealive + 1;
     }
 }
-void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r, Mapa m)
+void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r, Mapa m, Camara cam)
 {
     for(int i = 0; i < e->ealive; i = i + 1)
     {
@@ -158,11 +159,11 @@ void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r, Mapa m)
         {
             e->ej[i].reroute--;
         }
-        if(!map_collision( m, e->ej[i].x + e->ej[i].v*e->ej[i].dx, e->ej[i].y, e->ej[i].w, e->ej[i].h))
+        if(!map_collision( m, cam, e->ej[i].x + e->ej[i].v*e->ej[i].dx, e->ej[i].y, e->ej[i].w, e->ej[i].h))
         {
             e->ej[i].x = e->ej[i].x + e->ej[i].v*e->ej[i].dx;
         }
-        if(!map_collision( m, e->ej[i].x, e->ej[i].y + e->ej[i].v*e->ej[i].dy, e->ej[i].w, e->ej[i].h))
+        if(!map_collision( m, cam, e->ej[i].x, e->ej[i].y + e->ej[i].v*e->ej[i].dy, e->ej[i].w, e->ej[i].h))
         {
             e->ej[i].y = e->ej[i].y + e->ej[i].v*e->ej[i].dy;
         }
@@ -192,8 +193,10 @@ void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r, Mapa m)
         e->ej[i].v = v;
     }
 }
-void draw_army(Ejercito e)
+void draw_army(Ejercito e, Camara cam)
 {
+    double offset_x = get_cam_x(cam);
+    double offset_y = get_cam_y(cam);
     for (int i = 0; i < e->ealive; i = i + 1)
     {
         if (e->ej[i].type == 1)
@@ -208,8 +211,8 @@ void draw_army(Ejercito e)
         {
             color_relleno(255, 255, 0, 230);
         }
-        dibuja_rectangulo(e->ej[i].x, e->ej[i].y, e->ej[i].w, e->ej[i].h);
-        dibuja_linea((e->ej[i].x + e->ej[i].w/2),(e->ej[i].y + e->ej[i].h/2),(e->ej[i].x + e->ej[i].w/2 + 100*e->ej[i].dx),(e->ej[i].y + e->ej[i].h/2 + 100*e->ej[i].dy));
+        dibuja_rectangulo(e->ej[i].x - offset_x, e->ej[i].y - offset_y, e->ej[i].w, e->ej[i].h);
+        dibuja_linea((e->ej[i].x + e->ej[i].w/2 - offset_x),(e->ej[i].y + e->ej[i].h/2 - offset_y),(e->ej[i].x + e->ej[i].w/2 + 100*e->ej[i].dx - offset_x),(e->ej[i].y + e->ej[i].h/2 + 100*e->ej[i].dy - offset_y));
 
     }
 }
