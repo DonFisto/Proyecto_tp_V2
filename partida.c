@@ -151,87 +151,112 @@ void army_generation(Partida p, Ejercito e, Jugador j, Mapa m, Camara cam)
     int e0;
     int e1;
     int e2;
-    int hoard_size = p->round/2 + 1;
+    int hoard_size = p->round + 10;
     if (hoard_size > T_MAX_EJERCITO)
     {
         hoard_size = T_MAX_EJERCITO;
     }
     switch(hoard_size)
     {
-    case 1:
-        e0 = 0;
-        e1 = 0;
-        e2 = 1;
-        break;
-    case 2:
-        e0 = 0;
-        e1 = 0;
-        e2 = 2;
-        break;
-    case 3:
-        e0 = 0;
-        e1 = 1;
-        e2 = 2;
-        break;
-    case 4:
-        e0 = 1;
-        e1 = 0;
-        e2 = 3;
-        break;
-    case 5:
-        e0 = 3;
-        e1 = 0;
-        e2 = 2;
-        break;
-    case 6:
-        e0 = 4;
-        e1 = 1;
-        e2 = 1;
-        break;
-    case 7:
-        e0 = 3;
-        e1 = 2;
-        e2 = 2;
-        break;
-    case 8:
-        e0 = 4;
-        e1 = 3;
-        e2 = 1;
-        break;
-    case 9:
-        e0 = 2;
-        e1 = 6;
-        e2 = 1;
-        break;
     case 10:
-        e0 = 5;
-        e1 = 3;
-        e2 = 2;
+        e0 = 0;
+        e1 = 0;
+        e2 = 10;
         break;
     case 11:
-        e0 = 3;
-        e1 = 6;
-        e2 = 2;
+        e0 = 0;
+        e1 = 3;
+        e2 = 8;
         break;
     case 12:
-        e0 = 6;
+        e0 = 0;
         e1 = 4;
-        e2 = 2;
+        e2 = 8;
         break;
     case 13:
-        e0 = 11;
-        e1 = 1;
-        e2 = 1;
+        e0 = 0;
+        e1 = 5;
+        e2 = 8;
         break;
     case 14:
-        e0 = 2;
-        e1 = 8;
-        e2 = 4;
+        e0 = 3;
+        e1 = 3;
+        e2 = 8;
         break;
     case 15:
+        e0 = 3;
+        e1 = 4;
+        e2 = 8;
+        break;
+    case 16:
+        e0 = 5;
+        e1 = 6;
+        e2 = 5;
+        break;
+    case 17:
         e0 = 7;
+        e1 = 6;
+        e2 = 4;
+        break;
+    case 18:
+        e0 = 7;
+        e1 = 8;
+        e2 = 3;
+        break;
+    case 19:
+        e0 = 8;
+        e1 = 8;
+        e2 = 3;
+        break;
+    case 20:
+        e0 = 7;
+        e1 = 10;
+        e2 = 3;
+        break;
+    case 21:
+        e0 = 10;
+        e1 = 9;
+        e2 = 2;
+        break;
+    case 22:
+        e0 = 11;
+        e1 = 10;
+        e2 = 1;
+        break;
+    case 23:
+        e0 = 8;
+        e1 = 14;
+        e2 = 1;
+        break;
+    case 24:
+        e0 = 14;
+        e1 = 9;
+        e2 = 1;
+        break;
+    case 25:
+        e0 = 12;
+        e1 = 13;
+        e2 = 0;
+        break;
+    case 26:
+        e0 = 14;
+        e1 = 12;
+        e2 = 0;
+        break;
+    case 27:
+        e0 = 3;
+        e1 = 24;
+        e2 = 0;
+        break;
+    case 28:
+        e0 = 20;
         e1 = 7;
         e2 = 1;
+        break;
+    case 29:
+        e0 = 5;
+        e1 = 24;
+        e2 = 0;
         break;
     default:
         e0 = 7;
@@ -321,24 +346,39 @@ void box_behavior(Partida p, Caja c, Jugador j)
         move_box(c);
     }
 }
-void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m, Camara cam)
+void draw_HUD(Partida p, Jugador j, Ejercito e, Caja c, Mapa m, Camara cam)
 {
-    dibuja_imagen(p->backg, -50.0, -75, 1600, 900);
-    draw_map(m, cam);
+    int ratiow = W/CAMERA_W;
+    int ratioh = H/CAMERA_H;
     char msg[15];
     dibuja_rectangulo(5, 5, 200, 20);
     sprintf(msg, "vidas: %d\n", get_player_lives(j));
     dibuja_texto(msg, 10, 10);
     sprintf(msg,"pts: %d\n", get_game_pts(p) );
     dibuja_texto(msg, 100, 10);
-    draw_minimap(m, CAMERA_W - W/20, 0, 20);
+    draw_minimap(m, CAMERA_W - W/ratiow/5, 0, 5);
     color_relleno(0, 0, 255, 100);
-    dibuja_circulo(get_player_pos_x(j)/W*CAMERA_W/5 + CAMERA_W - W/20, get_player_pos_y(j)/H*CAMERA_H/5, 5);
+    dibuja_rectangulo(get_player_pos_x(j)/W*CAMERA_W/5 + CAMERA_W - W/ratiow/5, get_player_pos_y(j)/H*CAMERA_H/5, 4, 4);
+    color_relleno(255, 0, 0, 255);
+    for(int i = 0; i < get_army_ealive(e); i = i + 1)
+    {
+        dibuja_rectangulo(get_enemy_x(e, i)/W*CAMERA_W/5 + CAMERA_W - W/20, get_enemy_y(e, i)/H*CAMERA_H/5, 4, 4);
+    }
+    color_relleno(0, 255, 0, 255);
+    dibuja_rectangulo(get_box_x(c)/W*CAMERA_W/5 + CAMERA_W - W/20, get_box_y(c)/H*CAMERA_H/5, 4, 4);
+
+}
+void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m, Camara cam)
+{
+    dibuja_imagen(p->backg, -50.0, -75, 1600, 900);
+    draw_map(m, cam);
     draw_player(j, cam);
     draw_army(e, cam);
     draw_burst_shot(rj, cam);
     draw_burst_shot(re, cam);
     draw_box(c, cam);
+    draw_HUD(p, j, e, c, m, cam);
+
 
 }
 void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m, Camara cam)

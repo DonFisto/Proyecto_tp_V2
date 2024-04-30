@@ -17,7 +17,7 @@
 #define H 3000
 #define LB_SIZE 10
 #define PI 3.14159265358979323846
-#define T_MAX_EJERCITO 15
+#define T_MAX_EJERCITO 30
 #define TROUND 500
 #define BLOCK_SIZE 30
 #define CAMERA_W 1500

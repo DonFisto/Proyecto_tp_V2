@@ -76,7 +76,7 @@ int main( int argc, char *argv[] )
         {
 
             rellena_fondo( 255,255,255, 255 );
-            draw_minimap(m, 0, 0, 4);
+            draw_minimap(m, 0, 0, 1);
             int result = menu(p);
             if(result == 1)
             {

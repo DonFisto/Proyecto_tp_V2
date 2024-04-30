@@ -23,6 +23,21 @@ typedef struct CajaRep * Caja;
 int get_box_type(Caja c);
 
 /**
+  \brief Devuelve la coordenada x de una caja
+  \param c caja de la que se devuelve la información.
+  \return coordenada x de la caja.
+ */
+double get_box_x(Caja c);
+
+/**
+  \brief Devuelve la coordenada y de una caja
+  \param c caja de la que se devuelve la información.
+  \return coordenada y de la caja.
+ */
+double get_box_y(Caja c);
+
+
+/**
   \brief Crea e inicializa un consumible.
   \return consumible con los valores inicializados.
  */

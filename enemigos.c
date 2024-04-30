@@ -41,6 +41,14 @@ void set_ealive(Ejercito e, int n)
 {
     e->ealive = n;
 }
+double get_enemy_x(Ejercito e, int index)
+{
+    return e->ej[index].x;
+}
+double get_enemy_y(Ejercito e, int index)
+{
+    return e->ej[index].y;
+}
 Ejercito create_army()
 {
     Ejercito e = malloc(sizeof(struct EjercitoRep));

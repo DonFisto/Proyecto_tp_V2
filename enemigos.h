@@ -26,6 +26,23 @@ int get_army_ealive(Ejercito e);
 void set_ealive(Ejercito e, int n);
 
 /**
+  \brief Devuelve la coordenada x de un enemigo del ejército
+  \param e ejército del que se devuelve la información.
+  \param index posicion en el ejército del enemigo del que se devuelve la información.
+  \return coordenada x del enemigo correspondiente al índice.
+ */
+double get_enemy_x(Ejercito e, int index);
+
+/**
+  \brief Devuelve la coordenada y de un enemigo del ejército
+  \param e ejército del que se devuelve la información.
+  \param index posicion en el ejército del enemigo del que se devuelve la información.
+  \return coordenada y del enemigo correspondiente al índice.
+ */
+double get_enemy_y(Ejercito e, int index);
+
+
+/**
   \brief Crea e inicializa un ejército.
   \return ejército inicializada.
  */

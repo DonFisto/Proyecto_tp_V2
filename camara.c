@@ -51,7 +51,10 @@ void camera_follow(Camara cam, double x, double y)
     {
         cam->y = cam->y + my/100 * CAMERA_TRACKING_SPEED;
     }
-
+    if(cam->x < 0)cam->x = 0;
+    if(cam->y < 0)cam->y = 0;
+    if(cam->x > W - CAMERA_W)cam->x = W - CAMERA_W;
+    if(cam->y > H - CAMERA_H)cam->y = H - CAMERA_H;
     //cam->x = x - CAMERA_W/2;
     //cam->y = y - CAMERA_H/2;
 

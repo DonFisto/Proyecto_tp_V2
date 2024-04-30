@@ -25,6 +25,14 @@ int get_box_type(Caja c)
 {
     return c->type;
 }
+double get_box_x(Caja c)
+{
+    return c->x;
+}
+double get_box_y(Caja c)
+{
+    return c->y;
+}
 
 Caja create_box()
 {

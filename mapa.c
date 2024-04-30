@@ -376,7 +376,7 @@ void draw_map(Mapa m, Camara cam)
         {
             px = j * BLOCK_SIZE - offset_x;
             py = i * BLOCK_SIZE - offset_y;
-            if ((px >= 0 && px < CAMERA_W && py >= 0 && py < CAMERA_H) && m->terreno[i][j] == 1)
+            if ((px >= -BLOCK_SIZE && px < CAMERA_W + BLOCK_SIZE && py >= -BLOCK_SIZE && py < CAMERA_H + BLOCK_SIZE) && m->terreno[i][j] == 1)
             {
                 color_relleno(255, 255, 255, 255);
                 //dibuja_rectangulo(j * BLOCK_SIZE - offset_x, i * BLOCK_SIZE - offset_y, BLOCK_SIZE, BLOCK_SIZE);
@@ -389,7 +389,9 @@ void draw_map(Mapa m, Camara cam)
 void draw_minimap(Mapa m, int x, int y, int scale)
 {
     color_relleno(255, 255, 255, 70);
-    dibuja_rectangulo(x, y, W/scale, H/scale);
+    int ratiow = W/CAMERA_W;
+    int ratioh = H/CAMERA_H;
+    dibuja_rectangulo(x, y, W/ratiow/scale, H/ratioh/scale);
     for(int i = 0; i < H/BLOCK_SIZE; i = i + 1)
     {
         for(int j = 0; j < W/BLOCK_SIZE; j = j + 1)
@@ -397,7 +399,7 @@ void draw_minimap(Mapa m, int x, int y, int scale)
             if(m->terreno[i][j]==1)
             {
                 color_relleno(255, 0, 0, 255);
-                dibuja_rectangulo(x + j * BLOCK_SIZE/scale, y + i * BLOCK_SIZE/scale, BLOCK_SIZE/scale, BLOCK_SIZE/scale);
+                dibuja_rectangulo(x + j * BLOCK_SIZE/ratiow/scale, y + i * BLOCK_SIZE/ratioh/scale, BLOCK_SIZE/ratiow/scale, BLOCK_SIZE/ratioh/scale);
             }
         }
 
