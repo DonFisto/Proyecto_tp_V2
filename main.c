@@ -60,7 +60,7 @@ int main( int argc, char *argv[] )
                 }
             }
             actualiza_pantalla();
-            espera(10);
+            espera(15);
 
 
         }

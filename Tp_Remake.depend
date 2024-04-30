@@ -421,7 +421,7 @@
 
 1714415442 c:\users\dmcvg\onedrive\documentos\tp_remake\colisiones.h
 
-1714488302 c:\users\dmcvg\onedrive\documentos\tp_remake\constantes.h
+1714492008 c:\users\dmcvg\onedrive\documentos\tp_remake\constantes.h
 
 1714492176 source:c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.c
 	<stdlib.h>
@@ -477,7 +477,7 @@
 
 1714491965 c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.h
 
-1714491169 source:c:\users\dmcvg\onedrive\documentos\tp_remake\main.c
+1714493257 source:c:\users\dmcvg\onedrive\documentos\tp_remake\main.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -511,7 +511,7 @@
 
 1714492208 c:\users\dmcvg\onedrive\documentos\tp_remake\partida.h
 
-1714492239 source:c:\users\dmcvg\onedrive\documentos\tp_remake\partida.c
+1714493242 source:c:\users\dmcvg\onedrive\documentos\tp_remake\partida.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -526,7 +526,7 @@
 	"mapa.h"
 	"camara.h"
 
-1714491900 source:c:\users\dmcvg\onedrive\documentos\tp_remake\mapa.c
+1714493068 source:c:\users\dmcvg\onedrive\documentos\tp_remake\mapa.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
