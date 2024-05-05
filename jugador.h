@@ -148,8 +148,7 @@ void draw_player(Jugador j, Camara cam);
   \param j jugador a mover.
   \param r rafaga disparada por los jugadores.
   \param m terreno en el que se desarrolla la partida.
-  \param cam cámara de la partida.
  */
-void move_player(Jugador j, Rafaga r, Mapa m, Camara cam);
+void move_player(Jugador j, Rafaga r, Mapa m);
 
 #endif

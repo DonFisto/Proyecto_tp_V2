@@ -2,13 +2,8 @@
 #include <stdio.h>
 #include <math.h>
 #include "Pantalla.h"
-#include "jugador.h"
 #include "constantes.h"
 #include "colisiones.h"
-#include "rafaga.h"
-#include "enemigos.h"
-#include "consumibles.h"
-#include "partida.h"
 #include "mapa.h"
 #include "camara.h"
 #include "string.h"
@@ -22,6 +17,11 @@ Mapa create_map()
     Mapa nuevo = malloc(sizeof(struct MapaRep));
     nuevo->tile = lee_imagen("space-wall-tile_11zon.bmp",1);
     return nuevo;
+}
+
+void free_map(Mapa m)
+{
+    free(m);
 }
 void reset_map(Mapa m)
 {
@@ -43,26 +43,25 @@ void save_map(Mapa m)
         {
             for(int j = 0; j < W/BLOCK_SIZE; j = j + 1)
             {
-                fprintf(fp, "%d", m->terreno[i][j]);
+                fprintf(fp, "%d ", m->terreno[i][j]);
             }
             fprintf(fp, "\n");
         }
     }
-    fclose(fp);
 }
 
 
 void read_map(Mapa m)
 {
     FILE * fp = NULL;
-    fp = fopen("mapa.txt", "r");
+    fp = fopen("mapas_importar.txt", "r");
     if (fp != NULL)
     {
         for(int i = 0; i < H/BLOCK_SIZE; i = i + 1)
         {
             for(int j = 0; j < W/BLOCK_SIZE; j = j + 1)
             {
-                fscanf(fp, "%d", &m->terreno[i][j]);
+                fscanf(fp, "%d ", &m->terreno[i][j]);
             }
         }
     }
@@ -406,7 +405,7 @@ void draw_minimap(Mapa m, int x, int y, int scale)
     }
 }
 
-int map_collision(Mapa m, Camara cam, double x, double y, double w, double h)
+int map_collision(Mapa m, double x, double y, double w, double h)
 {
 
     int cord_x = x/BLOCK_SIZE;

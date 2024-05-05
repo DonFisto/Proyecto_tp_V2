@@ -6,9 +6,6 @@
 #include "constantes.h"
 #include "colisiones.h"
 #include "rafaga.h"
-#include "enemigos.h"
-#include "consumibles.h"
-#include "partida.h"
 #include "mapa.h"
 #include "camara.h"
 
@@ -195,7 +192,7 @@ void apuntar3(Jugador j)
     j->aimy = (j->y-y_raton())/dp*-1;
 
 }
-void check_bounds (Jugador j)
+void check_bounds_seamless (Jugador j)
 {
     if(j->x >= W )
     {
@@ -214,14 +211,35 @@ void check_bounds (Jugador j)
         j->y = -j->h + 1;
     }
 }
-void move_player(Jugador j, Rafaga r, Mapa m, Camara cam)
+
+void check_bounds (Jugador j)
+{
+    if(j->x >= W - j->w)
+    {
+        j->x = W - j->w;
+    }
+    if(j->x <= 0)
+    {
+        j->x = 0;
+    }
+    if(j->y <= 0)
+    {
+        j->y = 0;
+    }
+    if(j->y >= H - j->h)
+    {
+        j->y = H - j->h;
+    }
+}
+
+void move_player(Jugador j, Rafaga r, Mapa m)
 {
 
-    if(!map_collision( m, cam, j->x + j->vx*2/5, j->y, j->w, j->h))
+    if(!map_collision( m, j->x + j->vx*2/5, j->y, j->w, j->h))
     {
         j->x = j->x + j->vx*2/5;
     }
-    if(!map_collision( m, cam, j->x, j->y + j->vy*2/5, j->w, j->h))
+    if(!map_collision( m, j->x, j->y + j->vy*2/5, j->w, j->h))
     {
         j->y = j->y + j->vy*2/5;
     }
@@ -232,19 +250,19 @@ void move_player(Jugador j, Rafaga r, Mapa m, Camara cam)
     check_bounds(j);
     apuntar2(j);
 
-    if(j->vx < 20 && tecla_pulsada(SDL_SCANCODE_D) && !map_collision( m, cam, j->x + (j->vx+5)*2/5, j->y, j->w, j->h))
+    if(j->vx < 20 && tecla_pulsada(SDL_SCANCODE_D) && !map_collision( m, j->x + (j->vx+5)*2/5, j->y, j->w, j->h))
     {
         j->vx = j->vx + 5;
     }
-    if(j->vx > -20 && tecla_pulsada(SDL_SCANCODE_A) && !map_collision( m, cam, j->x + (j->vx-5)*2/5, j->y, j->w, j->h))
+    if(j->vx > -20 && tecla_pulsada(SDL_SCANCODE_A) && !map_collision( m, j->x + (j->vx-5)*2/5, j->y, j->w, j->h))
     {
         j->vx = j->vx - 5;
     }
-    if(j->vy > -20 && tecla_pulsada(SDL_SCANCODE_W) && !map_collision( m, cam, j->x, j->y + (j->vy-5)*2/5, j->w, j->h))
+    if(j->vy > -20 && tecla_pulsada(SDL_SCANCODE_W) && !map_collision( m, j->x, j->y + (j->vy-5)*2/5, j->w, j->h))
     {
         j->vy = j->vy - 5;
     }
-    if(j->vy < 20 && tecla_pulsada(SDL_SCANCODE_S) && !map_collision( m, cam, j->x, j->y + (j->vy+5)*2/5, j->w, j->h))
+    if(j->vy < 20 && tecla_pulsada(SDL_SCANCODE_S) && !map_collision( m, j->x, j->y + (j->vy+5)*2/5, j->w, j->h))
     {
         j->vy = j->vy + 5;
     }

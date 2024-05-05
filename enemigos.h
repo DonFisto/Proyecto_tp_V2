@@ -1,5 +1,8 @@
 #ifndef __enemigos_H__
 #define __enemigos_H__
+#include "camara.h"
+#include "rafaga.h"
+#include "mapa.h"
 
 /**
    \file enemigos.h
@@ -71,9 +74,8 @@ void insert_enemy(Ejercito e, double x, double y, int type);
   \param jinv parámetro de invencibilidad del jugador.
   \param r rafaga disparada por los enemigos.
   \param m terreno en el que se desarrolla la partida.
-  \param cam cámara de la partida.
  */
-void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r, Mapa m, Camara cam);
+void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r, Mapa m);
 
 /**
   \brief Dibuja un ejército.

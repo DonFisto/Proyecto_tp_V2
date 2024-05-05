@@ -4,7 +4,6 @@
 #include "Pantalla.h"
 #include "jugador.h"
 #include "constantes.h"
-#include "colisiones.h"
 #include "rafaga.h"
 #include "enemigos.h"
 #include "consumibles.h"
@@ -18,8 +17,7 @@ int main( int argc, char *argv[] )
     crea_pantalla( "Ejemplo 2", CAMERA_W, CAMERA_H);
     printf("* * * * * INICIO JUEGO * * * * *\n\n\n\n\n");
     Mapa m = create_map();
-    reset_map(m);
-    generate_map(m, 200);
+    read_map(m);
     Partida p = start_game();
     Jugador j = create_player();
     Ejercito e = create_army();
@@ -28,7 +26,6 @@ int main( int argc, char *argv[] )
     Caja c = create_box();
     Camara cam = create_camera(0, 0);
     end_game(p);
-    int spam_check = 1;
 
     while ( pantalla_activa())
     {
@@ -42,35 +39,22 @@ int main( int argc, char *argv[] )
             }
             else
             {
-                if(get_game_pause(p))
-                {
                 draw_game(p, j, e, rj, re, c, m, cam);
                 int outcome = pause_menu(p);
                    if(outcome == 1)
                    {
                         unpause(p);
-                        spam_check = 1;
                    }
                    if(outcome == 2)
                    {
                        update_records(p);
                        end_game(p);
-                       spam_check = 1;
                    }
-                }
             }
             actualiza_pantalla();
             espera(15);
 
 
-        }
-        else if(spam_check)
-        {
-            if (!menu(p))
-            {
-                spam_check = 0;
-            }
-            espera(10);
         }
         else
         {
@@ -100,8 +84,7 @@ int main( int argc, char *argv[] )
             else if(result == 4)
             {
                 reset_map(m);
-                generate_map(m, 200);
-                spam_check = 1;
+                generate_map(m, 500);
             }
             actualiza_pantalla();
             espera(10);

@@ -2,15 +2,12 @@
 #include <stdio.h>
 #include <math.h>
 #include "Pantalla.h"
-#include "jugador.h"
 #include "constantes.h"
 #include "colisiones.h"
 #include "rafaga.h"
-#include "enemigos.h"
-#include "consumibles.h"
-#include "partida.h"
 #include "mapa.h"
 #include "camara.h"
+#include "bala.h"
 
 struct NodoBala
 {
@@ -43,7 +40,7 @@ void insert_burst(Rafaga r, Bala b)
     nuevo->sig = r->sig;
     r->sig = nuevo;
 }
-void move_burst_shot(Rafaga r, Mapa m, Camara cam)
+void move_burst_shot(Rafaga r, Mapa m)
 {
     Rafaga aux = r;
     double x;
@@ -55,7 +52,7 @@ void move_burst_shot(Rafaga r, Mapa m, Camara cam)
         x = get_bullet_x(aux->sig->b);
         y = get_bullet_y(aux->sig->b);
         rad = get_bullet_rad(aux->sig->b);
-        if(x >= W+rad || x <=-rad || y >= H + rad || y <= -rad || map_collision(m, cam, x, y, rad*2, rad*2))
+        if(x >= W+rad || x <=-rad || y >= H + rad || y <= -rad || map_collision(m, x, y, rad*2, rad*2))
         {
             Rafaga borrar = aux->sig;
             aux->sig = borrar->sig;

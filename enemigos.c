@@ -2,13 +2,10 @@
 #include <stdio.h>
 #include <math.h>
 #include "Pantalla.h"
-#include "jugador.h"
 #include "constantes.h"
 #include "colisiones.h"
 #include "rafaga.h"
 #include "enemigos.h"
-#include "consumibles.h"
-#include "partida.h"
 #include "mapa.h"
 #include "camara.h"
 
@@ -100,7 +97,7 @@ void insert_enemy(Ejercito e, double x, double y, int type)
         e->ealive = e->ealive + 1;
     }
 }
-void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r, Mapa m, Camara cam)
+void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r, Mapa m)
 {
     for(int i = 0; i < e->ealive; i = i + 1)
     {
@@ -167,36 +164,34 @@ void move_army(Ejercito e, double jx, double jy, int jinv, Rafaga r, Mapa m, Cam
         {
             e->ej[i].reroute--;
         }
-        if(!map_collision( m, cam, e->ej[i].x + e->ej[i].v*e->ej[i].dx, e->ej[i].y, e->ej[i].w, e->ej[i].h))
+        if(!map_collision( m, e->ej[i].x + e->ej[i].v*e->ej[i].dx, e->ej[i].y, e->ej[i].w, e->ej[i].h))
         {
             e->ej[i].x = e->ej[i].x + e->ej[i].v*e->ej[i].dx;
         }
-        if(!map_collision( m, cam, e->ej[i].x, e->ej[i].y + e->ej[i].v*e->ej[i].dy, e->ej[i].w, e->ej[i].h))
+        if(!map_collision( m, e->ej[i].x, e->ej[i].y + e->ej[i].v*e->ej[i].dy, e->ej[i].w, e->ej[i].h))
         {
             e->ej[i].y = e->ej[i].y + e->ej[i].v*e->ej[i].dy;
         }
-        /*
-        e->ej[i].x = e->ej[i].x + e->ej[i].v*e->ej[i].dx;
-        e->ej[i].y = e->ej[i].y + e->ej[i].v*e->ej[i].dy;
-        */
-        if(e->ej[i].x >= W )
+
+        if(e->ej[i].x >= W - e->ej[i].w)
         {
-            e->ej[i].x = -e->ej[i].w;
-            e->ej[i].reroute = 0;
+            e->ej[i].x = W -e->ej[i].w;
+            e->ej[i].dx = -e->ej[i].dx;
         }
-        if(e->ej[i].x <= -e->ej[i].w )
+        if(e->ej[i].x <= 0 )
         {
-            e->ej[i].x = W-1;
-            e->ej[i].reroute = 0;
+            e->ej[i].x = 0;
+            e->ej[i].dx = -e->ej[i].dx;
         }
-        if(e->ej[i].y <= -e->ej[i].h )
+        if(e->ej[i].y <= 0 )
         {
-            e->ej[i].y = H-1;
-            e->ej[i].reroute = 0;
+            e->ej[i].y = 0;
+            e->ej[i].dy = -e->ej[i].dy;
         }
-        if(e->ej[i].y >= H )
+        if(e->ej[i].y >= H - e->ej[i].h)
         {
-            e->ej[i].y = -e->ej[i].h +1;
+            e->ej[i].y = H - e->ej[i].h;
+            e->ej[i].dy = -e->ej[i].dy;
         }
         e->ej[i].v = v;
     }

@@ -1,5 +1,7 @@
 #ifndef __consumibles_H__
 #define __consumibles_H__
+#include "camara.h"
+#include "mapa.h"
 
 /**
    \file consumibles.h
@@ -14,10 +16,10 @@ typedef struct CajaRep * Caja;
 /**
   \brief Indica el tipo de consumible que es una caja
   \param c caja de la que se devuelve la información.
-  \return 0 si la caja recarga la munición del jugador.
-  \return 1 si la caja da un escudo al jugador.
-  \return 2 si la caja incrementa las vidas del jugador.
-  \return 3 si la caja habilita temporalmente el triple disparo para el jugador.
+  \return 0-2 si la caja recarga la munición del jugador.
+  \return 3 si la caja da un escudo al jugador.
+  \return 4 si la caja incrementa las vidas del jugador.
+  \return 5 si la caja habilita temporalmente el triple disparo para el jugador.
 
  */
 int get_box_type(Caja c);
@@ -66,7 +68,7 @@ int box_collision(Caja c, double x, double y, double w, double h);
   \param c caja a mover.
   \param cam cámara de la partida.
  */
-void move_box(Caja c);
+void move_box(Caja c, Mapa m);
 
 /**
   \brief Dibuja una caja.

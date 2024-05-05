@@ -1,9 +1,12 @@
 #ifndef __mapa_H__
 #define __mapa_H__
+#include "camara.h"
 
 typedef struct MapaRep * Mapa;
 
 Mapa create_map();
+
+void free_map(Mapa m);
 
 void reset_map(Mapa m);
 
@@ -19,7 +22,7 @@ void draw_minimap(Mapa m, int x, int y, int scale);
 
 void generate_map(Mapa m, int n);
 
-int map_collision(Mapa m, Camara cam, double x, double y, double w, double h);
+int map_collision(Mapa m, double x, double y, double w, double h);
 
 int line_map_collision(Mapa m, double x1, double y1, double x2, double y2);
 

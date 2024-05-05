@@ -1,6 +1,6 @@
 #ifndef __rafaga_H__
 #define __rafaga_H__
-#include "colisiones.h"
+#include "bala.h"
 #include "mapa.h"
 /**
    \file rafaga.h
@@ -35,9 +35,8 @@ void insert_burst(Rafaga r, Bala b);
   \brief Mueve una ráfaga.
   \param r ráfaga a mover.
   \param m terreno sobre el que se mueve la ráfaga.
-  \param cam cámara de la partida.
  */
-void move_burst_shot(Rafaga r, Mapa m, Camara cam);
+void move_burst_shot(Rafaga r, Mapa m);
 
 /**
   \brief Dibuja una ráfaga.

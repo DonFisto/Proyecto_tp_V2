@@ -146,7 +146,7 @@ int check_end_game(Partida p, Jugador j)
     }
     return 0;
 }
-void army_generation(Partida p, Ejercito e, Jugador j, Mapa m, Camara cam)
+void army_generation(Partida p, Ejercito e, Jugador j, Mapa m)
 {
     int e0;
     int e1;
@@ -271,7 +271,7 @@ void army_generation(Partida p, Ejercito e, Jugador j, Mapa m, Camara cam)
     {
         int x = rand()%(W-40);
         int y = rand()%(H-40);
-        while(distancia_punto_punto((get_player_pos_x(j) + get_player_width(j)/2),(get_player_pos_y(j) + get_player_height(j)/2), x, y) < 500 || map_collision(m, cam, x, y, 80, 80))
+        while(distancia_punto_punto((get_player_pos_x(j) + get_player_width(j)/2),(get_player_pos_y(j) + get_player_height(j)/2), x, y) < 500 || map_collision(m, x, y, 80, 80))
         {
             x = rand()%(W-40);
             y = rand()%(H-40);
@@ -296,9 +296,9 @@ void army_generation(Partida p, Ejercito e, Jugador j, Mapa m, Camara cam)
 
 
 }
-void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re, Mapa m, Camara cam)
+void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re, Mapa m)
 {
-    move_army(e, get_player_pos_x(j), get_player_pos_y(j), get_player_inv(j), re, m, cam);
+    move_army(e, get_player_pos_x(j), get_player_pos_y(j), get_player_inv(j), re, m);
     if ((object_army_collision(e, get_player_pos_x(j), get_player_pos_y(j), get_player_width(j), get_player_height(j))||(burst_shot_collision(re, get_player_pos_x(j), get_player_pos_y(j), get_player_width(j), get_player_height(j))))&&(!get_player_inv(j)))
     {
         dmg(j);
@@ -307,7 +307,7 @@ void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re, Mapa 
     if(p->troundleft == 0)
     {
         p->round = p->round + 1;
-        army_generation(p, e, j, m, cam);
+        army_generation(p, e, j, m);
         printf("-----ROUND %d-----\n",p->round);
         p->troundleft = TROUND;
     }
@@ -323,7 +323,7 @@ void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re, Mapa 
 
 
 }
-void box_behavior(Partida p, Caja c, Jugador j)
+void box_behavior(Partida p, Caja c, Jugador j, Mapa m)
 {
     if(box_collision(c, get_player_pos_x(j), get_player_pos_y(j), get_player_width(j), get_player_height(j)))
     {
@@ -334,22 +334,28 @@ void box_behavior(Partida p, Caja c, Jugador j)
             set_energy(j, 120);
             break;
         case 1:
-            set_inv(j, 100);
+            set_energy(j, 120);
             break;
         case 2:
-            set_lives(j, get_player_lives(j) + 1);
+            set_energy(j, 120);
             break;
         case 3:
+            set_inv(j, 100);
+            break;
+        case 4:
+            set_lives(j, get_player_lives(j) + 1);
+            break;
+        case 5:
             set_triple_shot(j);
             break;
+
         }
-        move_box(c);
+        move_box(c, m);
     }
 }
 void draw_HUD(Partida p, Jugador j, Ejercito e, Caja c, Mapa m, Camara cam)
 {
     int ratiow = W/CAMERA_W;
-    int ratioh = H/CAMERA_H;
     char msg[15];
     dibuja_rectangulo(5, 5, 200, 20);
     sprintf(msg, "vidas: %d\n", get_player_lives(j));
@@ -370,7 +376,9 @@ void draw_HUD(Partida p, Jugador j, Ejercito e, Caja c, Mapa m, Camara cam)
 }
 void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m, Camara cam)
 {
-    dibuja_imagen(p->backg, -50.0, -75, 1600, 900);
+    double offset_x = get_cam_x(cam);
+    double offset_y = get_cam_y(cam);
+    dibuja_imagen(p->backg, -200 -offset_x/15, -300 - offset_y/15, 2400, 1350);
     draw_map(m, cam);
     draw_player(j, cam);
     draw_army(e, cam);
@@ -383,15 +391,19 @@ void draw_game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, M
 }
 void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m, Camara cam)
 {
-    move_player(j, rj, m, cam);
-    army_behavior(p, e, j, rj, re, m, cam);
-    move_burst_shot(rj, m, cam);
-    move_burst_shot(re, m, cam);
+    move_player(j, rj, m);
+    army_behavior(p, e, j, rj, re, m);
+    move_burst_shot(rj, m);
+    move_burst_shot(re, m);
     camera_follow(cam, get_player_pos_x(j), get_player_pos_y(j));
-    box_behavior(p, c, j);
+    box_behavior(p, c, j, m);
     if(tecla_pulsada(SDL_SCANCODE_ESCAPE))
     {
         p->pause = 1;
+        while (pantalla_activa() && tecla_pulsada(SDL_SCANCODE_ESCAPE))
+        {
+            espera(5);
+        }
     }
     if(check_end_game(p, j))
     {
@@ -409,38 +421,51 @@ int button_click(double x, double y, double w, double h)
 }
 int menu(Partida p)
 {
+    int result = 0;
     //botón de partida
     color_relleno(100, 100, 100, 255);
     dibuja_rectangulo(500, 100, 500, 150);
-    if(button_click(500, 100, 500, 150))return 1;
+    if(button_click(500, 100, 500, 150))result = 1;
     //botón salir
     color_relleno(255, 0, 0, 255);
     dibuja_rectangulo(500, 500, 500, 150);
-    if(button_click(500, 500, 500, 150))return 3;
+    if(button_click(500, 500, 500, 150))result = 3;
     //botón mapa nuevo
     color_relleno(0, 255, 0, 255);
     dibuja_rectangulo(1300, 200, 50, 50);
-    if(button_click(1300, 200, 50, 50))return 4;
+    if(button_click(1300, 200, 50, 50))result = 4;
+    while (pantalla_activa() && (button_click(500, 100, 500, 150) || button_click(500, 500, 500, 150) || button_click(1300, 200, 50, 50)))
+    {
+        espera(5);
+    }
 
-
-    return 0;
+    return result;
 
 }
 int pause_menu(Partida p)
 {
+    int result = 0;
     color_relleno(255, 255, 255, 75);
     dibuja_rectangulo(0, 0, 1500, 750);
     //botón de partida
     color_relleno(100, 100, 100, 255);
     dibuja_rectangulo(500, 100, 500, 150);
-    if(button_click(500, 100, 500, 150)||tecla_pulsada(SDL_SCANCODE_BACKSPACE))return 1;
+    if(button_click(500, 100, 500, 150)||tecla_pulsada(SDL_SCANCODE_ESCAPE))result = 1;
+    while (pantalla_activa() && tecla_pulsada(SDL_SCANCODE_ESCAPE))
+    {
+        espera(5);
+    }
     //botón salir
     color_relleno(255, 0, 0, 255);
     dibuja_rectangulo(500, 500, 500, 150);
-    if(button_click(500, 500, 500, 150))return 2;
+    if(button_click(500, 500, 500, 150))result = 2;
 
+    while (pantalla_activa() && (button_click(500, 100, 500, 150) || button_click(500, 500, 500, 150) || tecla_pulsada(SDL_SCANCODE_ESCAPE)))
+    {
+        espera(5);
+    }
 
-    return 0;
+    return result;
 
 }
 

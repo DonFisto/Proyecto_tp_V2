@@ -1,5 +1,11 @@
 #ifndef __partida_H__
 #define __partida_H__
+#include "camara.h"
+#include "rafaga.h"
+#include "mapa.h"
+#include "jugador.h"
+#include "enemigos.h"
+#include "consumibles.h"
 /**
 \mainpage Proyecto
 
@@ -118,7 +124,7 @@ int check_end_game(Partida p, Jugador j);
   \param m terreno en el que se desarrolla la partida.
   \param cam cámara de la partida.
  */
-void army_generation(Partida p, Ejercito e, Jugador j, Mapa m, Camara cam);
+void army_generation(Partida p, Ejercito e, Jugador j, Mapa m);
 
 /**
   \brief Regula el comportamiento de los enemigos.
@@ -128,17 +134,17 @@ void army_generation(Partida p, Ejercito e, Jugador j, Mapa m, Camara cam);
   \param rj rafaga disparada por el jugador.
   \param re rafaga disparada por los enemigos.
   \param m terreno en el que se desarrolla la partida.
-  \param cam cámara de la partida.
  */
-void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re, Mapa m, Camara cam);
+void army_behavior(Partida p, Ejercito e, Jugador j, Rafaga rj, Rafaga re, Mapa m);
 
 /**
   \brief Regula el comportamiento del tesoro consumible.
   \param p partida actual.
   \param c tesoro consumible por el jugador.
   \param j jugador principal de la partida.
+  \param m terreno en el que se desarrolla la partida.
  */
-void box_behavior(Partida p, Caja c, Jugador j);
+void box_behavior(Partida p, Caja c, Jugador j, Mapa m);
 
 /**
   \brief Dibuja todos los elementos visibles del juego y el HUD.
