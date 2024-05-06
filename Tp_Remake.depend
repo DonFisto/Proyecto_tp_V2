@@ -408,15 +408,15 @@
 	"rafaga.h"
 	"mapa.h"
 
-1714946473 c:\users\dmcvg\onedrive\documentos\tp_remake\rafaga.h
+1714992492 c:\users\dmcvg\onedrive\documentos\tp_remake\rafaga.h
 	"bala.h"
 	"mapa.h"
 
 1714945106 c:\users\dmcvg\onedrive\documentos\tp_remake\colisiones.h
 
-1714511139 c:\users\dmcvg\onedrive\documentos\tp_remake\constantes.h
+1715023972 c:\users\dmcvg\onedrive\documentos\tp_remake\constantes.h
 
-1714946473 source:c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.c
+1715020932 source:c:\users\dmcvg\onedrive\documentos\tp_remake\jugador.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -435,7 +435,7 @@
 	<stdio.h>
 	<math.h>
 
-1714946473 source:c:\users\dmcvg\onedrive\documentos\tp_remake\rafaga.c
+1714993376 source:c:\users\dmcvg\onedrive\documentos\tp_remake\rafaga.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -447,7 +447,7 @@
 	"camara.h"
 	"bala.h"
 
-1714945384 source:c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.c
+1714947199 source:c:\users\dmcvg\onedrive\documentos\tp_remake\enemigos.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -464,7 +464,7 @@
 	"rafaga.h"
 	"mapa.h"
 
-1714946546 source:c:\users\dmcvg\onedrive\documentos\tp_remake\main.c
+1715020932 source:c:\users\dmcvg\onedrive\documentos\tp_remake\main.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -478,7 +478,7 @@
 	"mapa.h"
 	"camara.h"
 
-1714946093 source:c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.c
+1715020053 source:c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -489,11 +489,11 @@
 	"mapa.h"
 	"camara.h"
 
-1714945782 c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.h
+1714990576 c:\users\dmcvg\onedrive\documentos\tp_remake\consumibles.h
 	"camara.h"
 	"mapa.h"
 
-1714946539 c:\users\dmcvg\onedrive\documentos\tp_remake\partida.h
+1714995495 c:\users\dmcvg\onedrive\documentos\tp_remake\partida.h
 	"camara.h"
 	"rafaga.h"
 	"mapa.h"
@@ -501,7 +501,7 @@
 	"enemigos.h"
 	"consumibles.h"
 
-1714946539 source:c:\users\dmcvg\onedrive\documentos\tp_remake\partida.c
+1715020932 source:c:\users\dmcvg\onedrive\documentos\tp_remake\partida.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -527,10 +527,10 @@
 	"camara.h"
 	"string.h"
 
-1714945413 c:\users\dmcvg\onedrive\documentos\tp_remake\mapa.h
+1715023292 c:\users\dmcvg\onedrive\documentos\tp_remake\mapa.h
 	"camara.h"
 
-1714946093 source:c:\users\dmcvg\onedrive\documentos\tp_remake\camara.c
+1715020932 source:c:\users\dmcvg\onedrive\documentos\tp_remake\camara.c
 	<stdlib.h>
 	<stdio.h>
 	<math.h>
@@ -538,7 +538,7 @@
 	"constantes.h"
 	"camara.h"
 
-1714505672 c:\users\dmcvg\onedrive\documentos\tp_remake\camara.h
+1715023190 c:\users\dmcvg\onedrive\documentos\tp_remake\camara.h
 
 1714945608 source:c:\users\dmcvg\onedrive\documentos\tp_remake\bala.c
 	<stdlib.h>

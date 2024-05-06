@@ -30,11 +30,18 @@ double get_box_y(Caja c)
     return c->y;
 }
 
-Caja create_box()
+Caja create_box(Mapa m)
 {
     Caja c = malloc(sizeof(struct CajaRep));
-    c->x = rand()%(W-40);
-    c->y = rand()%(H-40);
+    double x = rand()%(W-40);
+    double y = rand()%(H-40);
+    while(map_collision(m, c->x, c->y, c->w, c->h))
+    {
+        x = rand()%(W-40);
+        y = rand()%(H-40);
+    }
+    c->x = x;
+    c->y = y;
     c->w = 40;
     c->h = 40;
     c->type = rand()%6;
@@ -82,13 +89,17 @@ void draw_box(Caja c, Camara cam)
     else if(c->type == 4)
     {
         color_relleno(255, 0, 0, 255);
+        color_trazo(0, 0, 0, 0);
         dibuja_rectangulo(c->x + c->w/3 - offset_x, c->y + c->h/4 - offset_y, c->w/3, c->h/2);
         dibuja_rectangulo(c->x + c->w/4 - offset_x, c->y + c->h/3 - offset_y, c->w/2, c->h/3);
+        color_trazo(0, 0, 0, 255);
     }
     else if(c->type == 5)
     {
         color_relleno(115, 0, 255, 255);
-        dibuja_rectangulo(c->x + c->w/3 - offset_x, c->y + c->h/3 - offset_y, c->w/3, c->h/3);
+        dibuja_circulo(c->x + c->w/4 - offset_x, c->y + c->h*2/3 - offset_y, c->y/6);
+        dibuja_circulo(c->x + c->w*3/4 - offset_x, c->y + c->h*2/3 - offset_y, c->y/6);
+        dibuja_circulo(c->x + c->w/2 - offset_x, c->y + c->h/3 - offset_y, c->y/6);
     }
 
 

@@ -4,15 +4,8 @@
 /**
    \file constantes.h
    \brief  El modulo constantes recoge los datos constantes que se utilizan repetidamente en los distintos componentes del proyecto.
-   Este modulo consta de los siguientes elementos:<br/>
- <br/> W: define el ancho de la pantalla creada
- <br/> H: define el alto de la pantalla creada
- <br/> LB_SIZE: define el numero de puntuaciones que se almacenan en la tabla de records
- <br/> PI: almacena el valor de la constante matemática, usada para operaciones con ángulos en este proyecto
- <br/> T_MAX_EJERCITO: define el numero máximo de enemigos que puede haber simultaneamente
- <br/> TROUND: define el tiempo que dura cada ronda
-
 */
+
 #define W 6000
 #define H 3000
 #define LB_SIZE 10
@@ -23,5 +16,17 @@
 #define CAMERA_W 1500
 #define CAMERA_H 750
 #define CAMERA_TRACKING_SPEED 3
-
+/**
+   Este modulo consta de los siguientes elementos:<br/>
+ <br/> W: define el ancho de la pantalla creada
+ <br/> H: define el alto de la pantalla creada
+ <br/> LB_SIZE: define el numero de puntuaciones que se almacenan en la tabla de records
+ <br/> PI: almacena el valor de la constante matemática, usada para operaciones con ángulos en este proyecto
+ <br/> T_MAX_EJERCITO: define el numero máximo de enemigos que puede haber simultaneamente
+ <br/> TROUND: define el tiempo que dura cada ronda
+ <br/> BLOCK_SIZE: define el tiempo que dura cada ronda
+ <br/> CAMERA_W: define el ancho de la cámara
+ <br/> CAMERA_H: define el alto de la cámara
+ <br/> CAMERA_TRACKING_SPEED: define la velocidad con la que la cámara persigue a un punto
+*/
 #endif

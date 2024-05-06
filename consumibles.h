@@ -43,7 +43,7 @@ double get_box_y(Caja c);
   \brief Crea e inicializa un consumible.
   \return consumible con los valores inicializados.
  */
-Caja create_box();
+Caja create_box(Mapa m);
 
 /**
   \brief Libera una caja.
@@ -66,7 +66,7 @@ int box_collision(Caja c, double x, double y, double w, double h);
 /**
   \brief Cambia de posición una caja.
   \param c caja a mover.
-  \param cam cámara de la partida.
+  \param m terreno en el que se desarrolla la partida.
  */
 void move_box(Caja c, Mapa m);
 

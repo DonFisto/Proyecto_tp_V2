@@ -199,5 +199,7 @@ int menu(Partida p);
  */
 int pause_menu(Partida p);
 
+void ayuda(Partida p, Jugador j, Ejercito e, Rafaga r, Camara cam);
+
 
 #endif

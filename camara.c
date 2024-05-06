@@ -32,6 +32,11 @@ Camara create_camera(double x, double y)
     return nuevo;
 }
 
+void free_cam(Camara cam)
+{
+    free(cam);
+}
+
 void camera_follow(Camara cam, double x, double y)
 {
     double mx = (x - CAMERA_W/2 - cam->x);

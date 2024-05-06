@@ -23,7 +23,7 @@ int main( int argc, char *argv[] )
     Ejercito e = create_army();
     Rafaga rj = create_burst_shot();
     Rafaga re = create_burst_shot();
-    Caja c = create_box();
+    Caja c = create_box(m);
     Camara cam = create_camera(0, 0);
     end_game(p);
 
@@ -52,14 +52,14 @@ int main( int argc, char *argv[] )
                    }
             }
             actualiza_pantalla();
-            espera(15);
+            espera(10);
 
 
         }
         else
         {
 
-            rellena_fondo( 255,255,255, 255 );
+            rellena_fondo( 100,100,100, 255 );
             draw_minimap(m, 0, 0, 1);
             int result = menu(p);
             if(result == 1)
@@ -69,11 +69,19 @@ int main( int argc, char *argv[] )
                 e = create_army();
                 rj = create_burst_shot();
                 re = create_burst_shot();
-                c = create_box();
+                c = create_box(m);
+            }
+            else if(result == 2)
+            {
+                j = create_player();
+                ayuda(p, j, e, rj, cam);
+
             }
             else if(result == 3)
             {
                 save_map(m);
+                free_map(m);
+                free_cam(cam);
                 free_player(j);
                 free_army(e);
                 free_burst_shot(rj);

@@ -132,6 +132,7 @@ Partida start_game()
 }
 void free_game(Partida p)
 {
+    free(p->backg);
     free(p);
 }
 int check_end_game(Partida p, Jugador j)
@@ -402,7 +403,7 @@ void game(Partida p, Jugador j, Ejercito e, Rafaga rj, Rafaga re, Caja c, Mapa m
         p->pause = 1;
         while (pantalla_activa() && tecla_pulsada(SDL_SCANCODE_ESCAPE))
         {
-            espera(5);
+            espera(1);
         }
     }
     if(check_end_game(p, j))
@@ -425,18 +426,25 @@ int menu(Partida p)
     //botón de partida
     color_relleno(100, 100, 100, 255);
     dibuja_rectangulo(500, 100, 500, 150);
+    dibuja_texto("JUGAR", 730, 175);
     if(button_click(500, 100, 500, 150))result = 1;
+    //botón ayuda
+    dibuja_rectangulo(500, 300, 500, 150);
+    dibuja_texto("AYUDA", 730, 375);
+    if(button_click(500, 300, 500, 150))result = 2;
     //botón salir
     color_relleno(255, 0, 0, 255);
     dibuja_rectangulo(500, 500, 500, 150);
+    dibuja_texto("SALIR", 730, 575);
     if(button_click(500, 500, 500, 150))result = 3;
     //botón mapa nuevo
     color_relleno(0, 255, 0, 255);
     dibuja_rectangulo(1300, 200, 50, 50);
+    dibuja_texto("GENERAR MAPA ALEATORIO", 1230, 175);
     if(button_click(1300, 200, 50, 50))result = 4;
     while (pantalla_activa() && (button_click(500, 100, 500, 150) || button_click(500, 500, 500, 150) || button_click(1300, 200, 50, 50)))
     {
-        espera(5);
+        espera(1);
     }
 
     return result;
@@ -447,25 +455,202 @@ int pause_menu(Partida p)
     int result = 0;
     color_relleno(255, 255, 255, 75);
     dibuja_rectangulo(0, 0, 1500, 750);
+
     //botón de partida
     color_relleno(100, 100, 100, 255);
     dibuja_rectangulo(500, 100, 500, 150);
+    dibuja_texto("CONTINUAR", 700, 175);
     if(button_click(500, 100, 500, 150)||tecla_pulsada(SDL_SCANCODE_ESCAPE))result = 1;
     while (pantalla_activa() && tecla_pulsada(SDL_SCANCODE_ESCAPE))
     {
-        espera(5);
+        espera(1);
     }
     //botón salir
     color_relleno(255, 0, 0, 255);
     dibuja_rectangulo(500, 500, 500, 150);
+    dibuja_texto("SALIR A MENU", 690, 575);
     if(button_click(500, 500, 500, 150))result = 2;
 
     while (pantalla_activa() && (button_click(500, 100, 500, 150) || button_click(500, 500, 500, 150) || tecla_pulsada(SDL_SCANCODE_ESCAPE)))
     {
-        espera(5);
+        espera(1);
     }
 
     return result;
 
+}
+void ayuda(Partida p, Jugador j, Ejercito e, Rafaga r, Camara cam)
+{
+    int activo = 1;
+    while (pantalla_activa()&&activo)
+    {
+        dibuja_imagen(p->backg, -50, -75, 1600, 900);
+        color_relleno(255, 255, 255, 255);
+        dibuja_rectangulo(700, 50, 100, 50);
+        dibuja_texto("TUTORIAL", 715, 70);
+        Mapa m =create_map();
+        reset_map(m);
+        actualiza_pantalla();
+        espera(10);
+        while(pantalla_activa()&&!solape_circ_rect(CAMERA_W/2, CAMERA_H/2, 100, get_player_pos_x(j), get_player_pos_y(j), get_player_width(j), get_player_height(j)))
+        {
+            double offset_x = get_cam_x(cam);
+            double offset_y = get_cam_y(cam);
+            dibuja_imagen(p->backg, -50, -75, 1600, 900);
+            color_relleno(255, 255, 255, 70);
+            dibuja_circulo(CAMERA_W/2 - offset_x, CAMERA_H/2 - offset_y, 100);
+            color_relleno(255, 255, 255, 255);
+            dibuja_rectangulo(700, 50, 100, 50);
+            dibuja_texto("TUTORIAL", 715, 70);
+            dibuja_rectangulo( CAMERA_W/2 - offset_x - 200, CAMERA_H/2 - offset_y - 150 , 400, 25);
+            dibuja_texto("MUEVE EL JUGADOR HASTA EL CIRCULO (WASD)", CAMERA_W/2 - offset_x - 180 ,  CAMERA_H/2 - offset_y - 145 );
+            draw_player(j, cam);
+            camera_follow(cam, get_player_pos_x(j), get_player_pos_y(j));
+            move_player(j, r, m);
+            actualiza_pantalla();
+            espera(15);
+        }
+        insert_enemy(e, CAMERA_W/2 + 300, CAMERA_H/2, 2);
+        while(pantalla_activa()&&!burst_shot_collision(r, get_enemy_x(e, 0), get_enemy_y(e, 0), 50, 50))
+        {
+            double offset_x = get_cam_x(cam);
+            double offset_y = get_cam_y(cam);
+            dibuja_imagen(p->backg, -50, -75, 1600, 900);
+            color_relleno(255, 255, 255, 70);
+            draw_army(e, cam);
+            draw_burst_shot(r, cam);
+            color_relleno(255, 255, 255, 255);
+            dibuja_rectangulo(700, 50, 100, 50);
+            dibuja_texto("TUTORIAL", 715, 70);
+            dibuja_rectangulo( get_enemy_x(e, 0)- 175 - offset_x, get_enemy_y(e, 0) - 75 - offset_y, 400, 50);
+            dibuja_texto("DISPARA AL ENEMIGO PARA CONSEGUIR PUNTOS", get_enemy_x(e, 0)- 150 - offset_x ,  get_enemy_y(e, 0) - 70 - offset_y );
+            dibuja_texto("<- Y -> PARA APUNTAR, ESPACIO PARA DISPARAR", get_enemy_x(e, 0)- 170 - offset_x ,  get_enemy_y(e, 0) - 40 - offset_y );
+            draw_player(j, cam);
+            camera_follow(cam, get_player_pos_x(j), get_player_pos_y(j));
+            move_player(j, r, m);
+            move_burst_shot(r, m);
+            set_energy(j, 120);
+            actualiza_pantalla();
+            espera(15);
+        }
+        double rx = CAMERA_W/2 - 300;
+        double ry = CAMERA_H/2 + 300;
+        while(pantalla_activa()&&!solape_rectangulos(rx + 10, ry + 10, 10, 10, get_player_pos_x(j), get_player_pos_y(j), get_player_width(j), get_player_height(j)))
+        {
+            double offset_x = get_cam_x(cam);
+            double offset_y = get_cam_y(cam);
+            dibuja_imagen(p->backg, -50, -75, 1600, 900);
+            color_relleno(255, 255, 255, 70);
+            color_relleno(0, 255, 0, 255);
+            dibuja_rectangulo(rx - offset_x, ry - offset_y, 40, 40);
+            draw_burst_shot(r, cam);
+            color_relleno(255, 255, 255, 255);
+            dibuja_rectangulo(700, 50, 100, 50);
+            dibuja_texto("TUTORIAL", 715, 70);
+            dibuja_rectangulo( rx - offset_x - 180, ry - offset_y - 75 , 400, 25);
+            dibuja_texto("CONSIGUE EL TESORO PARA OBTENER MEJORAS", rx - offset_x - 155 ,  ry - offset_y - 70 );
+            draw_player(j, cam);
+            camera_follow(cam, get_player_pos_x(j), get_player_pos_y(j));
+            move_player(j, r, m);
+            move_burst_shot(r, m);
+            actualiza_pantalla();
+            espera(15);
+        }
+        int cutscene = 1;
+        color_relleno(20, 20, 20, 180);
+        dibuja_rectangulo(0, 0, CAMERA_W, CAMERA_H);
+        while(pantalla_activa() && cutscene)
+        {
+            color_relleno(255, 255, 255, 255);
+            dibuja_rectangulo( 550, 145 , 400, 25);
+            dibuja_texto("HAY CUATRO TIPOS DE TESORO DISTINTOS: ", 575 ,  150 );
+            actualiza_pantalla();
+            espera(15);
+            int i = 0;
+            while (pantalla_activa() && i < 100)
+            {
+                espera(20);
+                i = i + 1;
+            }
+            dibuja_rectangulo( 200, 300 , 200, 25);
+            dibuja_texto("RECARGA DE MUNICION ", 215 ,  305 );
+            color_relleno(0,255,0,255);
+            dibuja_rectangulo(280, 355, 40, 40);
+            color_relleno(162, 103, 18, 255);
+            dibuja_circulo(280 + 40/3*2,355 + 40/2 - 0.0005, 6.1);
+            color_relleno(50, 50, 50, 255);
+            dibuja_rectangulo(280 + 40/4, 355 + 40/3, 40/3 + 40/12, 40/3);
+            actualiza_pantalla();
+            espera(15);
+            i = 0;
+            while (pantalla_activa() && i < 80)
+            {
+                espera(20);
+                i = i + 1;
+            }
+            color_relleno(255, 255, 255, 255);
+            dibuja_rectangulo( 550, 300 , 100, 25);
+            dibuja_texto("ESCUDO", 575 ,  305 );
+            color_relleno(0,255,0,255);
+            dibuja_rectangulo(580, 355, 40, 40);
+            color_relleno(20, 209, 218, 255);
+            dibuja_circulo(580 + 40/2, 355 + 40/2 , 40/4);
+            actualiza_pantalla();
+            espera(15);
+            i = 0;
+            while (pantalla_activa() && i < 80)
+            {
+                espera(20);
+                i = i + 1;
+            }
+            color_relleno(255, 255, 255, 255);
+            dibuja_rectangulo( 800, 300 , 200, 25);
+            dibuja_texto("VIDA EXTRA ", 845 ,  305 );
+            color_relleno(0,255,0,255);
+            dibuja_rectangulo(880, 355, 40, 40);
+            color_relleno(255, 0, 0, 255);
+            color_trazo(0, 0, 0, 0);
+            dibuja_rectangulo(880 + 15, 355 + 40/4, 40/4, 40/2);
+            dibuja_rectangulo(880 + 40/4, 355 + 15, 40/2, 40/4);
+            color_trazo(0, 0, 0, 255);
+            actualiza_pantalla();
+            espera(15);
+            i = 0;
+            while (pantalla_activa() && i < 80)
+            {
+                espera(20);
+                i = i + 1;
+            }
+            color_relleno(255, 255, 255, 255);
+            dibuja_rectangulo( 1100, 300 , 200, 25);
+            dibuja_texto("TRIPLE DISPARO ", 1145 ,  305 );
+            color_relleno(0,255,0,255);
+            dibuja_rectangulo(1180, 355, 40, 40);
+            color_relleno(115, 0, 255, 255);
+            dibuja_circulo(1180 + 40/4, 355 + 40*2/3, 40/6);
+            dibuja_circulo(1180 + 40*3/4, 355 + 40*2/3, 40/6);
+            dibuja_circulo(1180 + 40/2, 355 + 40/3, 40/6);
+            actualiza_pantalla();
+            espera(15);
+            i = 0;
+            while (pantalla_activa() && i < 200)
+            {
+                espera(20);
+                i = i + 1;
+            }
+            color_relleno(255, 255, 255, 255);
+            dibuja_rectangulo( 500, 645 , 500, 25);
+            dibuja_texto("ESTE ES  EL FINAL DEL TUTORIAL, PULSE ESC PARA SALIR ", 525 ,  650 );
+            actualiza_pantalla();
+            espera(15);
+            while (pantalla_activa() && !tecla_pulsada(SDL_SCANCODE_ESCAPE))
+            {
+                espera(10);
+            }
+            cutscene = 0;
+            activo = 0;
+
+        }
+    }
 }
 

@@ -13,6 +13,7 @@ struct NodoBala
 {
     Bala b;
     struct NodoBala * sig;
+    int l;
 };
 
 Rafaga create_burst_shot()
@@ -39,6 +40,7 @@ void insert_burst(Rafaga r, Bala b)
     nuevo->b = b;
     nuevo->sig = r->sig;
     r->sig = nuevo;
+    r->l = r->l + 1;
 }
 void move_burst_shot(Rafaga r, Mapa m)
 {
@@ -58,6 +60,7 @@ void move_burst_shot(Rafaga r, Mapa m)
             aux->sig = borrar->sig;
             free_bullet(borrar->b);
             free(borrar);
+            r->l = r->l - 1;
         }
         else
         {
@@ -79,14 +82,7 @@ void draw_burst_shot(Rafaga r, Camara cam)
 }
 int burst_shot_lenght(Rafaga r)
 {
-    Rafaga aux = r;
-    int contador = 0;
-    while(aux->sig != NULL)
-    {
-        aux = aux->sig;
-        contador = contador + 1;
-    }
-    return contador;
+    return r->l;
 }
 int burst_shot_collision(Rafaga r, double x, double y, double w, double h)
 {

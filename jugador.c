@@ -137,6 +137,7 @@ Jugador create_player()
 }
 void free_player(Jugador j)
 {
+    free(j->img);
     free(j);
 }
 void draw_player(Jugador j, Camara cam)
@@ -243,10 +244,6 @@ void move_player(Jugador j, Rafaga r, Mapa m)
     {
         j->y = j->y + j->vy*2/5;
     }
-    /*
-    j->x = j->x + j->vx*2/5;
-    j->y = j->y + j->vy*2/5;
-    */
     check_bounds(j);
     apuntar2(j);
 

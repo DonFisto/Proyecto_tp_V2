@@ -378,7 +378,6 @@ void draw_map(Mapa m, Camara cam)
             if ((px >= -BLOCK_SIZE && px < CAMERA_W + BLOCK_SIZE && py >= -BLOCK_SIZE && py < CAMERA_H + BLOCK_SIZE) && m->terreno[i][j] == 1)
             {
                 color_relleno(255, 255, 255, 255);
-                //dibuja_rectangulo(j * BLOCK_SIZE - offset_x, i * BLOCK_SIZE - offset_y, BLOCK_SIZE, BLOCK_SIZE);
                 dibuja_imagen(m->tile, j * BLOCK_SIZE - offset_x, i * BLOCK_SIZE - offset_y, BLOCK_SIZE, BLOCK_SIZE );
             }
         }
