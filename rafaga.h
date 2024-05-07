@@ -1,6 +1,7 @@
 #ifndef __rafaga_H__
 #define __rafaga_H__
 #include "bala.h"
+#include "camara.h"
 #include "mapa.h"
 /**
    \file rafaga.h

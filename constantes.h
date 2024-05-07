@@ -4,19 +4,7 @@
 /**
    \file constantes.h
    \brief  El modulo constantes recoge los datos constantes que se utilizan repetidamente en los distintos componentes del proyecto.
-*/
 
-#define W 6000
-#define H 3000
-#define LB_SIZE 10
-#define PI 3.14159265358979323846
-#define T_MAX_EJERCITO 30
-#define TROUND 500
-#define BLOCK_SIZE 30
-#define CAMERA_W 1500
-#define CAMERA_H 750
-#define CAMERA_TRACKING_SPEED 3
-/**
    Este modulo consta de los siguientes elementos:<br/>
  <br/> W: define el ancho de la pantalla creada
  <br/> H: define el alto de la pantalla creada
@@ -29,4 +17,16 @@
  <br/> CAMERA_H: define el alto de la cámara
  <br/> CAMERA_TRACKING_SPEED: define la velocidad con la que la cámara persigue a un punto
 */
+
+#define W 6000
+#define H 3000
+#define LB_SIZE 10
+#define PI 3.14159265358979323846
+#define T_MAX_EJERCITO 30
+#define TROUND 500
+#define BLOCK_SIZE 30
+#define CAMERA_W 1500
+#define CAMERA_H 750
+#define CAMERA_TRACKING_SPEED 3
+
 #endif
